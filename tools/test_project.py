@@ -55,29 +55,30 @@ class ProjectToolTests(unittest.TestCase):
         """The supplied pack starts structurally consistent, without claiming runtime success."""
         self.assertEqual(project.validate(self.root), [])
 
-    def test_plan_has_36_tasks_and_only_first_ready(self) -> None:
-        """No later task is accidentally dispatchable before its prerequisites."""
+    def test_plan_has_36_tasks_and_only_one_ready(self) -> None:
+        """No task is accidentally dispatchable before its prerequisites are DONE."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 36)
-        self.assertEqual([t for t, s in states.items() if s == 'READY'], ['T001'])
+        ready = [t for t, s in states.items() if s == 'READY']
+        self.assertEqual(len(ready), 1, f'Expected exactly one READY task, got: {ready}')
 
     def test_ready_brief_contains_rules_and_one_card(self) -> None:
         """A ready assignment contains required rules without embedding the whole backlog."""
-        brief = project.make_brief(self.root, 'T001')
+        brief = project.make_brief(self.root, 'T002')
         self.assertIn('Repository rules for coding agents', brief)
-        self.assertIn('T001 - Record a compatible', brief)
+        self.assertIn('T002 - Create a minimal Godot', brief)
         self.assertNotIn('# T036 -', brief)
         self.assertLessEqual(len(brief.encode()), 24000)
 
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T002')
+            project.make_brief(self.root, 'T003')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T002', inspect=True))
+                      project.make_brief(self.root, 'T003', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -91,7 +92,7 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_unknown_state_is_rejected(self) -> None:
         """An invented success label cannot bypass the state model."""
-        self.edit('PLAN.md', '| READY |', '| PROBABLY_DONE |')
+        self.edit('PLAN.md', '| WAITING |', '| PROBABLY_DONE |')
         self.assertTrue(any('Unknown state' in e for e in project.validate(self.root)))
 
     def test_duplicate_plan_row_is_rejected(self) -> None:
@@ -112,9 +113,9 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| Create a minimal Godot project shell | WAITING |',
-                  '| Create a minimal Godot project shell | READY |')
-        self.assertTrue(any('T002: dependency T001 is not DONE' in e
+        self.edit('PLAN.md', '| Create a tiny test runner that fails correctly | WAITING |',
+                  '| Create a tiny test runner that fails correctly | READY |')
+        self.assertTrue(any('T003: dependency T002 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
@@ -140,7 +141,7 @@ class ProjectToolTests(unittest.TestCase):
     def test_brief_is_not_silently_truncated(self) -> None:
         """A size limit cannot silently remove safety or acceptance instructions."""
         with self.assertRaisesRegex(project.PlanError, 'above limit'):
-            project.make_brief(self.root, 'T001', max_bytes=2048)
+            project.make_brief(self.root, 'T002', max_bytes=2048)
 
     def test_unknown_task_is_rejected(self) -> None:
         """The helper never guesses an assignment from an unknown ID."""
@@ -194,7 +195,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T002'])
+            code = project.main(['--root', str(self.root), 'brief', 'T003'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 

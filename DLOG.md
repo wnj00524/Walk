@@ -5,3 +5,7 @@ Append one row per work session, oldest first and newest at the bottom. Never re
 | Date | Task / role | Change or result | Verification | Documentation updated | Risk / blocker | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-09-16 | PACK / author | Created agentic plan, 36 task cards, fixtures and offline helper tools; no game implementation | See docs/evidence/PACK.md for actual helper validation and test results | Root rules, plan, guides, task cards and prompts | Godot/plugin compatibility and visual quality are unverified | Assign T001 |
+| 2026-09-16 | T001 / probe | Recorded Godot 4.6.2 and Voxel Tools GDExtension 1.7 candidate URLs, hashes, and platform binaries | godot --version (4.6.2.stable.official.71f334935), SHA-256 stream verification, python tools/project.py validate, unittest suite (25 tests pass) | docs/toolchain.lock.json, docs/features/setup.md, docs/evidence/T001.md, docs/CODE_GUIDE.md, PLAN.md | GDExtension runtime loading (T008) and backend acceptance (T012) unverified | Coordinator review T001 then prepare T002 |
+| 2026-09-16 | T001 / reviewer | Review passed: candidate correctly recorded, evidence retained, unverified items declared; test suite updated for state progression; T001 DONE, T002 READY | python tools/project.py validate (PASS), python -m unittest discover (25 tests OK after state-progression fixes) | tools/test_project.py (state-tracking tests updated), PLAN.md, DLOG.md | None | Implement T002 |
+
+

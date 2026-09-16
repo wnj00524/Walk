@@ -1,25 +1,82 @@
 {
-  "status": "UNRESOLVED",
-  "note": "T001 records a verified prebuilt candidate. This is not an installed or tested toolchain.",
+  "status": "CANDIDATE_RECORDED",
+  "note": "T001 records a verified prebuilt candidate. Godot 4.6.2 official editor and Voxel Tools GDExtension 1.7 (for Godot 4.5+) are recorded with official download URLs and SHA-256 hashes. Runtime add-on loading and backend suitability remain subject to subsequent probe tasks.",
   "godot": {
-    "version": null,
-    "edition": null,
-    "platforms": {},
-    "export_templates": null
+    "version": "4.6.2-stable",
+    "edition": "official",
+    "binary_version_output": "4.6.2.stable.official.71f334935",
+    "platforms": {
+      "windows_x86_64": {
+        "url": "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_win64.exe.zip",
+        "archive_filename": "Godot_v4.6.2-stable_win64.exe.zip",
+        "size_bytes": 79831334,
+        "sha256": "14293422efb54b24a51f79d4cb55ab4001ef3d936e064a6c8af32e1f984024be",
+        "tested": true
+      },
+      "linux_x86_64": {
+        "url": "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_linux.x86_64.zip",
+        "archive_filename": "Godot_v4.6.2-stable_linux.x86_64.zip",
+        "size_bytes": 71803755,
+        "sha256": "30e6b6d141f0cd5bebd629ad1d0ef1324e60091bb20662d026b402ba58c59937",
+        "tested": false
+      },
+      "macos_universal": {
+        "url": "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_macos.universal.zip",
+        "archive_filename": "Godot_v4.6.2-stable_macos.universal.zip",
+        "size_bytes": 161174161,
+        "sha256": "666b2a64e4b5c59db0e4974605b888eb72eb7d4e60e870d2be6cc19727b50807",
+        "tested": false
+      }
+    },
+    "export_templates": {
+      "version": "4.6.2-stable",
+      "url": "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz",
+      "archive_filename": "Godot_v4.6.2-stable_export_templates.tpz",
+      "size_bytes": 1251900388,
+      "sha256": "942366dc4e27e7686a99da4d3cfb1b8ae8d3eb9444f6d8217eef16245b599ef2",
+      "tested": false
+    }
   },
   "terrain": {
     "name": "Voxel Tools",
-    "version": null,
-    "edition": null,
-    "source_revision": null,
-    "platforms": {}
+    "version": "1.7",
+    "edition": "GDExtension (Godot 4.5+)",
+    "release_tag": "v1.7x",
+    "source_revision": "75d3c6d996ed2331c80edcd8c3ebc947afc0f041",
+    "download_url": "https://github.com/Zylann/godot_voxel/releases/download/v1.7x/GodotVoxelExtension.zip",
+    "archive_filename": "GodotVoxelExtension.zip",
+    "size_bytes": 54457774,
+    "sha256": "600737572a5e25541ba6f503e842a3717ba19afafa5474510a6ceff995a1d2d8",
+    "platforms": {
+      "windows_x86_64": {
+        "binaries": [
+          "addons/zylann.voxel/bin/libvoxel.windows.editor.x86_64.dll",
+          "addons/zylann.voxel/bin/libvoxel.windows.template_release.x86_64.dll"
+        ],
+        "tested": false
+      },
+      "linux_x86_64": {
+        "binaries": [
+          "addons/zylann.voxel/bin/libvoxel.linux.editor.x86_64.so",
+          "addons/zylann.voxel/bin/libvoxel.linux.template_release.x86_64.so"
+        ],
+        "tested": false
+      },
+      "macos_universal": {
+        "binaries": [
+          "addons/zylann.voxel/bin/libvoxel.macos.editor.universal.framework/libvoxel.macos.editor.universal",
+          "addons/zylann.voxel/bin/libvoxel.macos.template_release.universal.framework/libvoxel.macos.template_release.universal"
+        ],
+        "tested": false
+      }
+    }
   },
   "python": {
     "minimum": "3.10",
-    "tested_version": null
+    "tested_version": "3.12.12"
   },
   "checks": {
-    "binary_start": false,
+    "binary_start": true,
     "extension_load": false,
     "windows_export_launch": false,
     "backend_gate": false
