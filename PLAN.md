@@ -35,7 +35,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | ID | Task | State |
 | --- | --- | --- |
 | T001 | Record a compatible prebuilt toolchain candidate | DONE |
-| T002 | Create a minimal Godot project shell | READY |
+| T002 | Create a minimal Godot project shell | REVIEW |
 | T003 | Create a tiny test runner that fails correctly | WAITING |
 | T004 | Add a reproducible game-check command | WAITING |
 | T005 | Implement comfortable basic first-person movement | WAITING |
