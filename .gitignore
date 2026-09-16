@@ -1,0 +1,15 @@
+# Local credentials, raw generation work, imports and produced evidence.
+.env
+.env.*
+!.env.example
+*.key
+asset_budget.local.json
+asset_work/
+artifacts/
+.tools/
+.godot/
+game/.godot/
+builds/
+__pycache__/
+*.pyc
+.DS_Store

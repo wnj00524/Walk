@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "batch_id": "example-disabled",
+  "approved": false,
+  "approved_by": null,
+  "request_ids": [],
+  "max_new_meshy_jobs": 0,
+  "max_new_elevenlabs_requests": 0,
+  "max_total_download_bytes": 104857600,
+  "cost_review": null,
+  "note": "Copy to an ignored local file, enumerate a finite approved batch, and record applicable costs before live use. Presence of a key is not approval."
+}

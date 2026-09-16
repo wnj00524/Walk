@@ -1,0 +1,72 @@
+{
+  "contract": "C02",
+  "origin": "Independent Python hashlib calculation when the plan was created; do not regenerate to hide a failing game implementation.",
+  "vectors": [
+    {
+      "seed": "42",
+      "channel": "tree",
+      "cell_x": "0",
+      "cell_z": "0",
+      "slot": 0,
+      "payload": "endless-nature|g1|42|tree|0|0|0",
+      "sha256": "38713d085c7a77f460218d20b993714ce731790a9c8b090d283c5c66f68c3245",
+      "first_u32": 946945288,
+      "unit_value": 0.22047788091003895
+    },
+    {
+      "seed": "42",
+      "channel": "tree",
+      "cell_x": "-1",
+      "cell_z": "0",
+      "slot": 0,
+      "payload": "endless-nature|g1|42|tree|-1|0|0",
+      "sha256": "2b54bba3de1b79635e2f7dc680f01cae0d3ce6fa85920ae44aa8f104d5badd2a",
+      "first_u32": 726973347,
+      "unit_value": 0.1692616723012179
+    },
+    {
+      "seed": "42",
+      "channel": "rock",
+      "cell_x": "0",
+      "cell_z": "0",
+      "slot": 0,
+      "payload": "endless-nature|g1|42|rock|0|0|0",
+      "sha256": "5c9ab5810078e2e5f5ba093dc099ea84d278177c62eafafe05c9ae942811e7d4",
+      "first_u32": 1553642881,
+      "unit_value": 0.3617356719914824
+    },
+    {
+      "seed": "0",
+      "channel": "tree",
+      "cell_x": "0",
+      "cell_z": "0",
+      "slot": 0,
+      "payload": "endless-nature|g1|0|tree|0|0|0",
+      "sha256": "38b35f285cf79c51f960762d0b0580c6fb830d7b6d7e325db3e9388addb8b7a5",
+      "first_u32": 951279400,
+      "unit_value": 0.2214869949966669
+    },
+    {
+      "seed": "2147483647",
+      "channel": "ground_cover",
+      "cell_x": "3906",
+      "cell_z": "-3907",
+      "slot": 7,
+      "payload": "endless-nature|g1|2147483647|ground_cover|3906|-3907|7",
+      "sha256": "d30268b6d6e663b5b393380eb85ab13b4b1edb1d6f862ce5ef471ceff801fabc",
+      "first_u32": 3540150454,
+      "unit_value": 0.8242555088363588
+    },
+    {
+      "seed": "42",
+      "channel": "tree",
+      "cell_x": "0",
+      "cell_z": "0",
+      "slot": 1,
+      "payload": "endless-nature|g1|42|tree|0|0|1",
+      "sha256": "b92fbdc7616fbc39d6ac8aa08be359dbdeeec8983fef7313609676708225df20",
+      "first_u32": 3106913735,
+      "unit_value": 0.7233847246970981
+    }
+  ]
+}

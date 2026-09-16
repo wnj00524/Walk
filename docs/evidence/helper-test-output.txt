@@ -1,0 +1,55 @@
+test_absolute_path_is_rejected (test_project.ProjectToolTests.test_absolute_path_is_rejected)
+Absolute paths are not permitted in task metadata. ... ok
+test_bad_json_is_rejected (test_project.ProjectToolTests.test_bad_json_is_rejected)
+Corrupt machine-readable metadata fails clearly instead of being ignored. ... ok
+test_brief_is_not_silently_truncated (test_project.ProjectToolTests.test_brief_is_not_silently_truncated)
+A size limit cannot silently remove safety or acceptance instructions. ... ok
+test_bundled_plan_validates (test_project.ProjectToolTests.test_bundled_plan_validates)
+The supplied pack starts structurally consistent, without claiming runtime success. ... ok
+test_cli_failure_is_nonzero (test_project.ProjectToolTests.test_cli_failure_is_nonzero)
+An invalid assignment produces a real failing command exit status. ... ok
+test_cli_reports_only_documentation_validation (test_project.ProjectToolTests.test_cli_reports_only_documentation_validation)
+A passing helper command explicitly avoids claiming the game was tested. ... ok
+test_coordinate_fixture_is_mathematically_correct (test_project.ProjectToolTests.test_coordinate_fixture_is_mathematically_correct)
+The reference locations use half-open cells correctly, including negatives. ... ok
+test_dependency_cycle_is_rejected (test_project.ProjectToolTests.test_dependency_cycle_is_rejected)
+Circular prerequisites are impossible to schedule and must be visible. ... ok
+test_done_requires_evidence_summary (test_project.ProjectToolTests.test_done_requires_evidence_summary)
+A DONE label must at least point to retained evidence; content still needs review. ... ok
+test_duplicate_plan_row_is_rejected (test_project.ProjectToolTests.test_duplicate_plan_row_is_rejected)
+The status authority cannot contain two conflicting rows for one task. ... ok
+test_future_waiting_context_is_allowed (test_project.ProjectToolTests.test_future_waiting_context_is_allowed)
+A later card may reference the explicitly future result of its prerequisites. ... ok
+test_missing_ready_context_is_reported (test_project.ProjectToolTests.test_missing_ready_context_is_reported)
+A task cannot be ready while its required instructions are missing. ... ok
+test_outside_read_path_is_rejected (test_project.ProjectToolTests.test_outside_read_path_is_rejected)
+Task context cannot direct this helper to read outside the repository. ... ok
+test_plan_has_36_tasks_and_only_first_ready (test_project.ProjectToolTests.test_plan_has_36_tasks_and_only_first_ready)
+No later task is accidentally dispatchable before its prerequisites. ... ok
+test_premature_ready_task_is_rejected (test_project.ProjectToolTests.test_premature_ready_task_is_rejected)
+Readiness requires accepted prerequisites, not just their existence. ... ok
+test_ready_brief_contains_rules_and_one_card (test_project.ProjectToolTests.test_ready_brief_contains_rules_and_one_card)
+A ready assignment contains required rules without embedding the whole backlog. ... ok
+test_required_section_is_checked (test_project.ProjectToolTests.test_required_section_is_checked)
+Each task needs explicit failure/stop instructions. ... ok
+test_seed_fixture_matches_independent_sha256 (test_project.ProjectToolTests.test_seed_fixture_matches_independent_sha256)
+The frozen reference bytes and numeric interpretations are internally correct. ... ok
+test_unexpected_metadata_is_rejected (test_project.ProjectToolTests.test_unexpected_metadata_is_rejected)
+A duplicate metadata status cannot become a second status authority. ... ok
+test_unknown_dependency_is_rejected (test_project.ProjectToolTests.test_unknown_dependency_is_rejected)
+All prerequisites must name actual tasks. ... ok
+test_unknown_state_is_rejected (test_project.ProjectToolTests.test_unknown_state_is_rejected)
+An invented success label cannot bypass the state model. ... ok
+test_unknown_task_is_rejected (test_project.ProjectToolTests.test_unknown_task_is_rejected)
+The helper never guesses an assignment from an unknown ID. ... ok
+test_waiting_brief_is_refused (test_project.ProjectToolTests.test_waiting_brief_is_refused)
+A waiting task cannot be handed out as a normal implementation assignment. ... ok
+test_waiting_task_can_be_inspected (test_project.ProjectToolTests.test_waiting_task_can_be_inspected)
+Coordinators can read later work only with an explicit non-implementation label. ... ok
+test_windows_escape_path_is_rejected (test_project.ProjectToolTests.test_windows_escape_path_is_rejected)
+Windows-style outside paths are refused even on another host OS. ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.314s
+
+OK

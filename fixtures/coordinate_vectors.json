@@ -1,0 +1,56 @@
+{
+  "contract": "C01",
+  "cell_width_m": 256,
+  "vectors": [
+    {
+      "world_axis_m": 0,
+      "expected_cell": "0",
+      "expected_local_m": 0
+    },
+    {
+      "world_axis_m": 0.25,
+      "expected_cell": "0",
+      "expected_local_m": 0.25
+    },
+    {
+      "world_axis_m": 255.75,
+      "expected_cell": "0",
+      "expected_local_m": 255.75
+    },
+    {
+      "world_axis_m": 256,
+      "expected_cell": "1",
+      "expected_local_m": 0
+    },
+    {
+      "world_axis_m": -0.25,
+      "expected_cell": "-1",
+      "expected_local_m": 255.75
+    },
+    {
+      "world_axis_m": -256,
+      "expected_cell": "-1",
+      "expected_local_m": 0
+    },
+    {
+      "world_axis_m": -256.25,
+      "expected_cell": "-2",
+      "expected_local_m": 255.75
+    },
+    {
+      "world_axis_m": 512,
+      "expected_cell": "2",
+      "expected_local_m": 0
+    },
+    {
+      "world_axis_m": 1000000,
+      "expected_cell": "3906",
+      "expected_local_m": 64
+    },
+    {
+      "world_axis_m": -1000000,
+      "expected_cell": "-3907",
+      "expected_local_m": 192
+    }
+  ]
+}

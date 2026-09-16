@@ -1,0 +1,27 @@
+{
+  "status": "UNRESOLVED",
+  "note": "T001 records a verified prebuilt candidate. This is not an installed or tested toolchain.",
+  "godot": {
+    "version": null,
+    "edition": null,
+    "platforms": {},
+    "export_templates": null
+  },
+  "terrain": {
+    "name": "Voxel Tools",
+    "version": null,
+    "edition": null,
+    "source_revision": null,
+    "platforms": {}
+  },
+  "python": {
+    "minimum": "3.10",
+    "tested_version": null
+  },
+  "checks": {
+    "binary_start": false,
+    "extension_load": false,
+    "windows_export_launch": false,
+    "backend_gate": false
+  }
+}
