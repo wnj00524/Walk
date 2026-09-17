@@ -12,6 +12,7 @@ const SmokeChecks = preload("res://tests/test_smoke.gd")
 const FailureChecks = preload("res://tests/test_harness_failure.gd")
 const PlayerChecks = preload("res://tests/test_player.gd")
 const WorldPositionChecks = preload("res://tests/test_world_position.gd")
+const WorldChoiceChecks = preload("res://tests/test_world_choices.gd")
 
 var _executed := 0
 var _passed := 0
@@ -39,10 +40,15 @@ func _run() -> void:
 				Callable(WorldPositionChecks, "repeated_boundary_crossings"),
 				Callable(WorldPositionChecks, "rejects_non_finite_input"),
 				Callable(WorldPositionChecks, "rejects_invalid_offsets")
+			],
+			"deterministic": [
+				Callable(WorldChoiceChecks, "frozen_seed_vectors"),
+				Callable(WorldChoiceChecks, "order_independence"),
+				Callable(WorldChoiceChecks, "rejects_non_canonical_inputs")
 			]
 		}
 		if not suites.has(suite_name):
-			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates." % suite_name)
+			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic." % suite_name)
 		else:
 			_run_suite(suite_name, suites[suite_name])
 	_finish()

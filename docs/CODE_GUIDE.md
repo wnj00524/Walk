@@ -22,11 +22,14 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/test_harness_failure.gd | Supplies an opt-in known failure to prove failures reach the process exit code | Keep intentionally broken and out of normal suites | `godot --headless --path game --script res://tests/run_tests.gd -- --self-test failure` |
 | game/src/world/world_position.gd | Keeps signed 256-metre logical cells and finite local metre offsets separate from renderer coordinates | Cell width and contract validation only | `python tools/check_game.py --suite coordinates` |
 | game/tests/test_world_position.gd | Reads frozen coordinate examples and checks boundaries and invalid input | Add independent cases without deriving expectations from production code | `python tools/check_game.py --suite coordinates` |
+| game/src/world/world_choices.gd | Turns a canonical world identity, cell, channel, and slot into a repeatable SHA-256 choice value | C02 payload fields, validation limits, and digest interpretation | `python tools/check_game.py --suite deterministic` |
+| game/tests/test_world_choices.gd | Compares deterministic choices with frozen seed vectors and checks order independence and rejection | Add independent vectors and invalid cases; do not generate expected values from production code | `python tools/check_game.py --suite deterministic` |
 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
 - [Minimal Godot Project Shell](features/project-shell.md)
 - [Comfortable First-Person Walking](features/walking.md)
 - [Logical World Positions](features/logical-positions.md)
+- [Deterministic World Choices](features/deterministic-world-choices.md)
 
-The minimal game shell, labelled walking fixture, and logical position value are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
+The minimal game shell, labelled walking fixture, logical position value, and deterministic application-level choice helper are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
