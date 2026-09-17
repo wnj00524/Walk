@@ -24,6 +24,7 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/test_world_position.gd | Reads frozen coordinate examples and checks boundaries and invalid input | Add independent cases without deriving expectations from production code | `python tools/check_game.py --suite coordinates` |
 | game/src/world/world_choices.gd | Turns a canonical world identity, cell, channel, and slot into a repeatable SHA-256 choice value | C02 payload fields, validation limits, and digest interpretation | `python tools/check_game.py --suite deterministic` |
 | game/tests/test_world_choices.gd | Compares deterministic choices with frozen seed vectors and checks order independence and rejection | Add independent vectors and invalid cases; do not generate expected values from production code | `python tools/check_game.py --suite deterministic` |
+| game/tests/probes/terrain_api_probe.gd | Constructs the pinned Voxel Tools native classes, records reflected API names, and performs small generator/viewer/collision/diagnostic calls | Keep calls guarded by observed class methods; do not turn this probe into a terrain world | `godot --headless --path game --script res://tests/probes/terrain_api_probe.gd` |
 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
@@ -31,5 +32,6 @@ Feature walkthroughs:
 - [Comfortable First-Person Walking](features/walking.md)
 - [Logical World Positions](features/logical-positions.md)
 - [Deterministic World Choices](features/deterministic-world-choices.md)
+- [Voxel Tools Terrain API](features/terrain-api.md)
 
-The minimal game shell, labelled walking fixture, logical position value, and deterministic application-level choice helper are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
+The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, and pinned Voxel Tools API probe are implemented. Terrain generation, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.

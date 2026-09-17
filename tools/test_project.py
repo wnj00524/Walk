@@ -64,21 +64,21 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_ready_brief_contains_rules_and_one_card(self) -> None:
         """A ready assignment contains required rules without embedding the whole backlog."""
-        brief = project.make_brief(self.root, 'T008')
+        brief = project.make_brief(self.root, 'T009')
         self.assertIn('Repository rules for coding agents', brief)
-        self.assertIn('T008 - Load the terrain add-on and verify its actual API', brief)
+        self.assertIn('T009 - Build one script-defined smooth streamed terrain probe', brief)
         self.assertNotIn('# T036 -', brief)
         self.assertLessEqual(len(brief.encode()), 24000)
 
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T009')
+            project.make_brief(self.root, 'T010')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T009', inspect=True))
+                      project.make_brief(self.root, 'T010', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -86,8 +86,8 @@ class ProjectToolTests(unittest.TestCase):
         self.assertTrue(any('context is missing' in e for e in project.validate(self.root)))
 
     def test_future_waiting_context_is_allowed(self) -> None:
-        """A later card may reference the explicitly future result of its prerequisites."""
-        self.assertFalse((self.root / 'docs/features/terrain-api.md').exists())
+        """A later card may reference a genuinely future terrain-world result."""
+        self.assertFalse((self.root / 'docs/features/terrain-world.md').exists())
         self.assertEqual(project.validate(self.root), [])
 
     def test_unknown_state_is_rejected(self) -> None:
@@ -113,9 +113,9 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| Build one script-defined smooth streamed terrain probe | WAITING |',
-                  '| Build one script-defined smooth streamed terrain probe | READY |')
-        self.assertTrue(any('T009: dependency T008 is not DONE' in e
+        self.edit('PLAN.md', '| Probe large-distance identity and coordinate handling | WAITING |',
+                  '| Probe large-distance identity and coordinate handling | READY |')
+        self.assertTrue(any('T010: dependency T009 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
@@ -141,7 +141,7 @@ class ProjectToolTests(unittest.TestCase):
     def test_brief_is_not_silently_truncated(self) -> None:
         """A size limit cannot silently remove safety or acceptance instructions."""
         with self.assertRaisesRegex(project.PlanError, 'above limit'):
-            project.make_brief(self.root, 'T008', max_bytes=2048)
+            project.make_brief(self.root, 'T009', max_bytes=2048)
 
     def test_unknown_task_is_rejected(self) -> None:
         """The helper never guesses an assignment from an unknown ID."""
@@ -195,7 +195,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T009'])
+            code = project.main(['--root', str(self.root), 'brief', 'T010'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 

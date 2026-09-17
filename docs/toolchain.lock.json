@@ -1,6 +1,6 @@
 {
   "status": "CANDIDATE_RECORDED",
-  "note": "T001 records a verified prebuilt candidate. Godot 4.6.2 official editor and Voxel Tools GDExtension 1.7 (for Godot 4.5+) are recorded with official download URLs and SHA-256 hashes. Runtime add-on loading and backend suitability remain subject to subsequent probe tasks.",
+  "note": "T008 verified runtime loading and the reflected Voxel Tools API for the pinned Windows bundle. Terrain backend suitability, visual quality, large-distance identity, and export launch remain subject to later tasks.",
   "godot": {
     "version": "4.6.2-stable",
     "edition": "official",
@@ -53,7 +53,8 @@
           "addons/zylann.voxel/bin/libvoxel.windows.editor.x86_64.dll",
           "addons/zylann.voxel/bin/libvoxel.windows.template_release.x86_64.dll"
         ],
-        "tested": false
+        "tested": true,
+        "probe": "game/tests/probes/terrain_api_probe.gd"
       },
       "linux_x86_64": {
         "binaries": [
@@ -77,7 +78,7 @@
   },
   "checks": {
     "binary_start": true,
-    "extension_load": false,
+    "extension_load": true,
     "windows_export_launch": false,
     "backend_gate": false
   }

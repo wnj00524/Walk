@@ -86,6 +86,6 @@ All exact versions, official download URLs, SHA-256 cryptographic hashes, and pl
 
 ### Known limitations and unverified items
 
-- **GDExtension runtime loading**: Unverified. Loading Voxel Tools in a Godot scene and confirming its GDScript API is owned by task T008.
+- **GDExtension runtime loading**: T008 verified the pinned Windows bundle in a headless Godot runtime and recorded its reflected API in [terrain-api.md](terrain-api.md). This does not accept the terrain backend or prove editor first-run stability.
 - **Export templates**: The archive SHA-256 has been recorded, but export template installation and Windows binary packaging are owned by task T034.
 - **Backend viability**: Candidate toolchain recording (T001) does not constitute acceptance of the Voxel Tools backend (T012).
