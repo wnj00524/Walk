@@ -58,7 +58,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T021 | Generate deterministic plant and rock placement data | DONE |
 | T022 | Render bounded spatial vegetation batches | DONE |
 | T023 | Set consistent terrain materials and daylight | DONE |
-| T024 | Accept the first procedural visual-quality slice | READY |
+| T024 | Accept the first procedural visual-quality slice | BLOCKED |
 | T025 | Implement a guarded ElevenLabs sound client | WAITING |
 | T026 | Produce and approve a small ambience library | WAITING |
 | T027 | Add layered local environmental sound | WAITING |

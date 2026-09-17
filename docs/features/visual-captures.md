@@ -18,6 +18,10 @@ the images beautiful; the owner still reviews the captured views.
 
 Later terrain, lighting, material, or asset changes require a fresh capture.
 
+T024 uses these captures as an owner gate rather than a beauty assertion. The
+gate records each rubric area separately and must also retain an unselected
+seed and a real walking clip before accepting the procedural slice.
+
 ## How it is tested
 
 ```text
