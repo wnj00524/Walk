@@ -56,12 +56,12 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After T021 review, T022 is the only task ready to implement."""
+        """After T022 review, T023 is the only task ready to implement."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T022'],
-                         f'Expected only T022 READY, got: {ready}')
+        self.assertEqual(ready, ['T023'],
+                         f'Expected only T023 READY, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
@@ -117,15 +117,15 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| T023 | Set consistent terrain materials and daylight | WAITING |',
-                  '| T023 | Set consistent terrain materials and daylight | READY |')
-        self.assertTrue(any('T023: dependency T022 is not DONE' in e
+        self.edit('PLAN.md', '| T024 | Accept the first procedural visual-quality slice | WAITING |',
+                  '| T024 | Accept the first procedural visual-quality slice | READY |')
+        self.assertTrue(any('T024: dependency T023 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| T023 | Set consistent terrain materials and daylight | WAITING |',
-                  '| T023 | Set consistent terrain materials and daylight | DONE |')
+        self.edit('PLAN.md', '| T024 | Accept the first procedural visual-quality slice | WAITING |',
+                  '| T024 | Accept the first procedural visual-quality slice | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:

@@ -1,15 +1,17 @@
-## Purpose: Captures fixed real-renderer views of the accepted ChunkTerrain service.
-## Why: Repeatable poses let reviewers compare terrain without manually positioning a camera.
-## Reads: visual_route.json, the C02 identity, and the accepted ChunkTerrain API.
+## Purpose: Captures fixed real-renderer views of terrain and approved vegetation.
+## Why: Repeatable poses let reviewers compare grounded content without manual camera setup.
+## Reads: visual_route.json, the C02 identity, ChunkTerrain, and VegetationBatches.
 ## Writes: Named PNGs and capture_report.json under the requested artifacts directory.
 ## Safe changes: Tune route poses with the reviewed JSON; keep the route and report metadata complete.
 ## Failure: Headless rendering, missing terrain readiness, or save failure exits nonzero.
 extends Node3D
 
 const ChunkTerrainType = preload("res://src/terrain/chunk_terrain.gd")
+const VegetationBatchesType = preload("res://src/presentation/vegetation_batches.gd")
 const ROUTE_PATH := "res://tests/visual_route.json"
 var _output_dir := ""
 var _terrain: Node
+var _vegetation: Node
 var _camera: Camera3D
 var _route: Dictionary
 
@@ -52,6 +54,14 @@ func _setup_world() -> void:
 		get_tree().quit(1)
 		return
 	_terrain.update_viewer(WorldPosition.from_cells(0, 0, 128.0, 128.0, 0.0).position)
+	var vegetation := VegetationBatchesType.new()
+	add_child(vegetation)
+	_vegetation = vegetation
+	var vegetation_configured := vegetation.configure_from_files(identity, _terrain)
+	if vegetation_configured.get("status") != "READY":
+		push_error("vegetation configuration failed: %s" % vegetation_configured)
+		get_tree().quit(1)
+		return
 
 func _capture_route() -> void:
 	for _frame in range(300):
@@ -62,6 +72,7 @@ func _capture_route() -> void:
 		push_error("terrain did not become READY within 300 frames")
 		get_tree().quit(1)
 		return
+	_vegetation.update_viewer(WorldPosition.from_cells(0, 0, 128.0, 128.0, 0.0).position)
 	var report := {
 		"godot_version": Engine.get_version_info().string,
 		"display_server": DisplayServer.get_name(),
@@ -71,6 +82,7 @@ func _capture_route() -> void:
 		"generator_version": _route.get("generator_version", ""),
 		"content_version": _route.get("content_version", ""),
 		"recipe": _route.get("recipe", {}),
+		"vegetation": _vegetation.get_diagnostics(),
 		"poses": [],
 	}
 	for pose: Dictionary in _route.get("poses", []):

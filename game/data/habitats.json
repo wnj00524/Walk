@@ -10,7 +10,7 @@
       "max_slope": 0.55,
       "scale_min": 0.8,
       "scale_max": 1.15,
-      "asset_ids": ["tree_temperate"]
+      "asset_ids": ["tree_temperate_01"]
     },
     {
       "habitat_id": "meadow",
@@ -21,7 +21,7 @@
       "max_slope": 0.3,
       "scale_min": 0.7,
       "scale_max": 1.0,
-      "asset_ids": ["fern_groundcover"]
+      "asset_ids": ["groundcover_fern_01"]
     },
     {
       "habitat_id": "rocky",
@@ -32,7 +32,7 @@
       "max_slope": 1.2,
       "scale_min": 0.65,
       "scale_max": 1.25,
-      "asset_ids": ["rock_boulder"]
+      "asset_ids": ["rock_temperate_01"]
     }
   ]
 }

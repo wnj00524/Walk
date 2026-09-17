@@ -85,9 +85,9 @@ static func _generate_with_catalogue(seed_value: int, cell_x: int, cell_z: int, 
 
 static func _catalogue() -> Dictionary:
 	return {
-		"tree_temperate": {"state": "APPROVED"},
-		"fern_groundcover": {"state": "APPROVED"},
-		"rock_boulder": {"state": "APPROVED"}
+		"tree_temperate_01": {"status": "APPROVED"},
+		"groundcover_fern_01": {"status": "APPROVED"},
+		"rock_temperate_01": {"status": "APPROVED"}
 	}
 
 static func _identity(seed_value: int) -> Dictionary:

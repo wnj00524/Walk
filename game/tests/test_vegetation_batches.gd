@@ -7,6 +7,8 @@
 extends RefCounted
 
 const VegetationBatchesType = preload("res://src/presentation/vegetation_batches.gd")
+const ChunkTerrainType = preload("res://src/terrain/chunk_terrain.gd")
+const LandformRecipeType = preload("res://src/world/landform_recipe.gd")
 
 static func creates_and_reuses_batches() -> String:
 	var holder := Node3D.new()
@@ -57,6 +59,26 @@ static func rejects_invalid_records_without_fallback() -> String:
 	var diagnostics := renderer.get_diagnostics()
 	holder.free()
 	return "invalid record created an instance" if result.status != "READY" or diagnostics.rendered_instance_count != 0 else ""
+
+static func renders_approved_runtime_assets() -> String:
+	var holder := Node3D.new()
+	var terrain := ChunkTerrainType.new()
+	holder.add_child(terrain)
+	var recipe: Dictionary = LandformRecipeType.load_default().recipe
+	recipe["synchronous_generation"] = true
+	terrain.configure(_identity(), recipe)
+	terrain.update_viewer(WorldPosition.from_cells(0, 0, 128.0, 128.0, 0.0).position)
+	var renderer := VegetationBatchesType.new()
+	holder.add_child(renderer)
+	var configured := renderer.configure_from_files(_identity(), terrain)
+	if configured.status != "READY":
+		holder.free()
+		return "runtime vegetation configuration failed: %s" % configured
+	renderer.update_viewer(WorldPosition.from_cells(0, 0, 128.0, 128.0, 0.0).position)
+	var diagnostics := renderer.get_diagnostics()
+	terrain.shutdown()
+	holder.free()
+	return "approved catalogue rendered no instances: %s" % diagnostics if diagnostics.rendered_instance_count < 1 else ""
 
 static func _record(cell: Vector2i, x_m: float, z_m: float) -> Dictionary:
 	return {"stable_id": "%d:%d:test:0" % [cell.x, cell.y], "asset_id": "missing_asset", "cell_x": cell.x, "cell_z": cell.y, "local_x_m": x_m, "local_z_m": z_m, "y_m": 4.0, "yaw_rad": 0.0, "scale": 1.0, "habitat_id": "test"}

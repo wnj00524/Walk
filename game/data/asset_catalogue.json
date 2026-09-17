@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "asset_id": "tree_temperate_01",
+    "provider": "meshy",
+    "status": "APPROVED",
+    "prompt": "A realistic temperate deciduous tree with a clean trunk, modest roots, and no leaves detached from branches.",
+    "config": {"ai_model": "meshy-6-lite", "enable_original_uv": true, "enable_pbr": true, "mode": "retexture", "target_formats": ["glb"], "texture_prompt": "Natural bark, muted green leaves, realistic temperate woodland PBR material, soft diffuse daylight, no studio lighting."},
+    "prompt_hash": "7091b6bd1874b999a621ca40fea6f97ae7e003dd6da57fbaad0a7a7a558e7c1a",
+    "config_hash": "49f5c5958bb1b4f982488b6b381adba2bae69933d65c7e5cf816869d1af68ea7",
+    "requested_dimensions": {"width_px": 2048, "height_px": 2048, "format": "glb"},
+    "source_path": "initial/tree_textured_01.glb",
+    "derivative_path": null,
+    "source_sha256": "3d2373eb0a3a32a10d9250790113a7331350809adc79442afe7d752fb206044c",
+    "provider_task_id": "01a0b14f-3885-722a-886e-d040d29302ca"
+  },
+  {
+    "asset_id": "rock_temperate_01",
+    "provider": "meshy",
+    "status": "APPROVED",
+    "prompt": "A low-poly but realistic temperate woodland rock, moss-free, neutral studio turntable.",
+    "config": {"ai_model": "meshy-6-lite", "enable_original_uv": true, "enable_pbr": true, "mode": "retexture", "target_formats": ["glb"], "texture_prompt": "Natural grey-brown stone with subtle roughness variation and restrained moss flecks, realistic woodland PBR material."},
+    "prompt_hash": "c183c65074a5d2664a62baa50939d0e2eb0804c47c7178d67132bfe0a9cba691",
+    "config_hash": "0682a613c4ba2af84f3da10f9a5d79a07ba047b3f9f7a58265f7cdb49e02a7c0",
+    "requested_dimensions": {"width_px": 1024, "height_px": 1024, "format": "glb"},
+    "source_path": "initial/rock_textured_01.glb",
+    "derivative_path": null,
+    "source_sha256": "cb642788ffbc999517a62d0a412f4b4850c4bee3b47cafd5941418767ec03718",
+    "provider_task_id": "01a0b14f-3d8b-7775-a7f9-1b4333b26ca4"
+  },
+  {
+    "asset_id": "groundcover_fern_01",
+    "provider": "meshy",
+    "status": "APPROVED",
+    "prompt": "A small temperate forest-floor fern clump with a grounded base and restrained leaf detail.",
+    "config": {"ai_model": "meshy-6-lite", "enable_original_uv": true, "enable_pbr": true, "mode": "retexture", "target_formats": ["glb"], "texture_prompt": "Natural green fern leaves with varied muted tones and earthy stems, realistic forest-floor PBR material."},
+    "prompt_hash": "ee4e47dc1be03a0bb7952a92737624fd1b2fc139d5a67e0d88baaa5cc6b26011",
+    "config_hash": "833ffbf35c5a9cae750c876ea2029b3f96a44070d72e6dbe69bf31e8a89c9c9e",
+    "requested_dimensions": {"width_px": 1024, "height_px": 1024, "format": "glb"},
+    "source_path": "initial/groundcover_textured_01.glb",
+    "derivative_path": null,
+    "source_sha256": "fae75e47318300bc223fcb2f076003b3fa783df908977f488d3ad47eee19865d",
+    "provider_task_id": "01a0b14f-4297-7452-8ce0-d0c199296d60"
+  }
+]

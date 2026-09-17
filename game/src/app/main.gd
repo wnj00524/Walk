@@ -74,6 +74,7 @@ func _physics_process(_delta: float) -> void:
 	if not _started:
 		if _terrain.get_ground_state(_position) != "READY":
 			return
+		_vegetation.update_viewer(_position)
 		_walker.position = Vector3(_position.local_x_m, _position.y_m, _position.local_z_m)
 		_walker.rotation.y = float(_view.yaw_rad)
 		_walker.camera.rotation.x = float(_view.pitch_rad)

@@ -107,7 +107,7 @@ func apply_batch(cell: Vector2i, records: Array, batch_epoch: int) -> Dictionary
 			_last_error = error
 			continue
 		var asset_entry: Variant = _catalogue.get(String(record.asset_id), null)
-		if not (asset_entry is Dictionary) or String(asset_entry.get("state", "")) != "APPROVED":
+		if not (asset_entry is Dictionary) or String(asset_entry.get("status", "")) != "APPROVED":
 			_last_error = "asset %s is not approved" % record.asset_id
 			continue
 		var resource_path := _runtime_path(String(asset_entry.get("source_path", asset_entry.get("derivative_path", ""))))
@@ -168,6 +168,12 @@ func _validate_record(record: Dictionary, cell: Vector2i) -> String:
 func _runtime_path(path: String) -> String:
 	if path.begins_with("res://"):
 		return path
+	if path.begins_with("game/assets/"):
+		return "res://assets/" + path.trim_prefix("game/assets/")
+	if path.begins_with("assets/"):
+		return "res://" + path
+	if path.begins_with("initial/"):
+		return "res://assets/" + path
 	if path.begins_with("game/"):
 		return "res://" + path.trim_prefix("game/")
 	return "res://" + path.trim_prefix("/")

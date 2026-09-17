@@ -8,8 +8,9 @@ yaw, and scale.
 
 The renderer never invents objects when placement is pending or an asset is
 missing. It converts only `APPROVED` catalogue entries with local `res://`
-resources into instances; the current empty catalogue therefore produces no
-fallback geometry. An epoch is attached to each batch handoff so a stale
+resources into instances; the checked-in catalogue now contains three
+approved textured local GLBs, and missing assets still produce no fallback
+geometry. An epoch is attached to each batch handoff so a stale
 result cannot repopulate a released or reconfigured world.
 
 The main walker loads the habitat rules and approved catalogue before enabling
@@ -23,5 +24,6 @@ python tools/check_game.py --suite vegetation
 ```
 
 The suite checks create/reuse, the nine-batch cap, stale-result rejection, and
-invalid-record rejection. A graphical asset-contact check remains dependent
-on a visually approved runtime catalogue.
+invalid-record rejection. A real-renderer asset-contact check is retained
+under `artifacts/T022_visual_capture`; final owner slice acceptance remains
+T024.

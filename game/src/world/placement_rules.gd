@@ -115,7 +115,7 @@ static func _choose_approved_asset(identity: Dictionary, cell_x: int, cell_z: in
 	var choice := _choice(identity, String(habitat.channel) + "_asset", cell_x, cell_z, 0)
 	var candidate: String = String(assets[min(int(choice.asset * assets.size()), assets.size() - 1)])
 	var entry: Variant = catalogue.get(candidate, null)
-	return candidate if entry is Dictionary and String(entry.get("state", "")) == "APPROVED" else ""
+	return candidate if entry is Dictionary and String(entry.get("status", "")) == "APPROVED" else ""
 
 static func _choice(identity: Dictionary, channel: String, cell_x: int, cell_z: int, slot: int) -> Dictionary:
 	var result := WorldChoicesType.try_unit_value(String(identity.world_seed), channel, str(cell_x), str(cell_z), str(slot))

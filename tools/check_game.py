@@ -129,7 +129,7 @@ def check_game(
     if expected not in version.output:
         return 1, f"ERROR: Godot version mismatch; expected {expected}. Log: {version_log}"
 
-    import_result = _run((binary, "--headless", "--path", str(root / "game"), "--editor", "--quit-after", "2"), timeout, runner)
+    import_result = _run((binary, "--headless", "--path", str(root / "game"), "--editor", "--import", "--quit-after", "20"), timeout, runner)
     import_log = _write_log(import_result, log_dir, f"{stamp}_import")
     problem = _failure(import_result, "Godot project import")
     if problem:

@@ -86,7 +86,8 @@ func _run() -> void:
 				Callable(VegetationBatchesChecks, "creates_and_reuses_batches"),
 				Callable(VegetationBatchesChecks, "releases_distant_batches_within_bound"),
 				Callable(VegetationBatchesChecks, "rejects_stale_batches"),
-				Callable(VegetationBatchesChecks, "rejects_invalid_records_without_fallback")
+				Callable(VegetationBatchesChecks, "rejects_invalid_records_without_fallback"),
+				Callable(VegetationBatchesChecks, "renders_approved_runtime_assets")
 			]
 		}
 		if not suites.has(suite_name):
