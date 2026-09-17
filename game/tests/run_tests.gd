@@ -10,6 +10,7 @@ extends SceneTree
 const TEST_MAIN_SCENE := "res://scenes/main.tscn"
 const SmokeChecks = preload("res://tests/test_smoke.gd")
 const FailureChecks = preload("res://tests/test_harness_failure.gd")
+const PlayerChecks = preload("res://tests/test_player.gd")
 
 var _executed := 0
 var _passed := 0
@@ -25,9 +26,16 @@ func _run() -> void:
 		_run_suite("failure", [Callable(FailureChecks, "always_fails")])
 	else:
 		var suite_name: String = options.get("suite", "")
-		var suites: Dictionary = {"smoke": [Callable(SmokeChecks, "main_scene_exists").bind(TEST_MAIN_SCENE)]}
+		var suites: Dictionary = {
+			"smoke": [Callable(SmokeChecks, "main_scene_exists").bind(TEST_MAIN_SCENE)],
+			"player": [
+				Callable(PlayerChecks, "settings_are_validated"),
+				Callable(PlayerChecks, "pitch_is_bounded"),
+				Callable(PlayerChecks, "motion_scales_with_elapsed_time")
+			]
+		}
 		if not suites.has(suite_name):
-			_record_failure("Unknown suite: '%s'. Available suites: smoke." % suite_name)
+			_record_failure("Unknown suite: '%s'. Available suites: smoke, player." % suite_name)
 		else:
 			_run_suite(suite_name, suites[suite_name])
 	_finish()

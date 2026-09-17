@@ -1,65 +1,96 @@
-; Purpose: Describes the visible prototype screen using only built-in Godot controls.
-; Why: A text scene can be reviewed and recreated without manual editor work.
-; Reads: The startup behaviour from res://src/app/main.gd.
-; Writes: Nothing; Godot instantiates these nodes in memory while the application runs.
-; Safe changes: Label wording, font sizes, colours, and layout offsets are cosmetic.
-; Failure: Missing script or font resources are reported by Godot during import or launch.
+; Purpose: Provides the labelled, simple test floor for T005's first-person walking check.
+; Why: A bounded fixture makes look, walk, and cursor release reviewable before real terrain.
+; Reads: The reusable player scene and built-in Godot mesh, light, and environment resources.
+; Writes: Nothing persistent; all floor, light, and instructional UI nodes are temporary.
+; Safe changes: Floor size, daylight colour, and instruction wording are prototype-only.
+; Failure: Missing player scene or malformed resources are reported during import or launch.
 
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://src/app/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
 
-[node name="Main" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_main")
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+size = Vector3(40, 0.2, 40)
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.055, 0.075, 0.065, 1)
-mouse_filter = 2
+[sub_resource type="BoxShape3D" id="BoxShape_floor"]
+size = Vector3(40, 0.2, 40)
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -38.0
-offset_right = 260.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.82, 0.91, 0.82, 1)
-theme_override_font_sizes/font_size = 32
-text = "Endless Nature — Prototype"
-horizontal_alignment = 1
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.22, 0.29, 0.2, 1)
+roughness = 0.95
 
-[node name="Status" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = 18.0
-offset_right = 240.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.58, 0.68, 0.6, 1)
+[sub_resource type="Environment" id="Environment_daylight"]
+background_mode = 1
+background_color = Color(0.48, 0.64, 0.78, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.65, 0.75, 0.82, 1)
+ambient_light_energy = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Material_marker"]
+albedo_color = Color(0.62, 0.42, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_marker"]
+size = Vector3(0.35, 1.0, 0.35)
+
+[node name="NatureWalkPrototype" type="Node3D"]
+
+[node name="Daylight" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_daylight")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -25, 0)
+light_color = Color(1, 0.93, 0.8, 1)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="TestFloorFixture" type="StaticBody3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="TestFloorFixture"]
+mesh = SubResource("BoxMesh_floor")
+material_override = SubResource("Material_floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloorFixture"]
+shape = SubResource("BoxShape_floor")
+
+[node name="StartMarker" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.5, -5)
+mesh = SubResource("BoxMesh_marker")
+material_override = SubResource("Material_marker")
+
+[node name="Walker" parent="." instance=ExtResource("1_player")]
+position = Vector3(0, 0.1, 5)
+
+[node name="Instructions" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="Instructions"]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 600.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Endless Nature — walking prototype"
+
+[node name="Controls" type="Label" parent="Instructions"]
+offset_left = 26.0
+offset_top = 60.0
+offset_right = 700.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.95, 0.98, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 16
-text = "Project shell — landscape not built yet"
-horizontal_alignment = 1
+text = "WASD walk  •  Mouse look  •  Escape releases the cursor  •  Click to resume"
+
+[node name="Fixture" type="Label" parent="Instructions"]
+offset_left = 26.0
+offset_top = 108.0
+offset_right = 700.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.86, 0.9, 0.82, 1)
+theme_override_font_sizes/font_size = 13
+text = "TEST FLOOR FIXTURE — terrain is not part of this check"

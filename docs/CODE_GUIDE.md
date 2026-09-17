@@ -12,7 +12,10 @@ This index describes only code actually included now. Intended game modules are 
 | fixtures/coordinate_vectors.json | Fixed examples of positive/negative map positions | Add independent examples without changing existing expectations | T006 consumes these in Godot |
 | docs/toolchain.lock.json | Pinned toolchain candidate versions, download URLs, and SHA-256 hashes | Candidate versions require matching checksums; see [docs/features/setup.md](features/setup.md) | `python tools/project.py validate` |
 | game/project.godot | Tells Godot which scene starts and sets the prototype window and renderer | Development window size; keep the main-scene path stable | `godot --headless --path game --editor --quit` |
-| game/scenes/main.tscn | Draws the plain prototype title and not-yet-built notice | Label wording, colours, font sizes, and layout | Launch with `godot --path game` and inspect the window |
+| game/src/player/walker.gd | Moves the first-person body, applies mouse look, and releases/re-captures the cursor safely | Speed, sensitivity, and pitch limits in metres/second and degrees | `python tools/check_game.py --suite player` plus graphical walk/look check |
+| game/scenes/player.tscn | Defines the player's collision capsule and eye-height camera | Capsule and camera dimensions, with visual review | Loaded by the player suite and prototype scene |
+| game/tests/test_player.gd | Tests comfort bounds and physics-step-independent movement | Add independent cases for changed comfort contracts | `python tools/check_game.py --suite player` |
+| game/scenes/main.tscn | Shows the labelled test floor, daylight, start marker, and controls for T005 | Fixture dimensions and instructional text only | Launch with `godot --path game` and perform the graphical check |
 | game/src/app/main.gd | Turns a window-close request into an orderly application exit | Add startup behaviour only in its assigned task | Launch, close the window, and confirm exit code 0 |
 | game/tests/run_tests.gd | Runs named offline Godot suites and reports honest counts and exit codes | Add focused registered suites; keep smoke and failure semantics stable | `godot --headless --path game --script res://tests/run_tests.gd -- --suite smoke` |
 | game/tests/test_smoke.gd | Checks that the current main scene exists for the passing smoke suite | Add independent foundation assertions | Selected by the smoke suite; headless only |
@@ -21,5 +24,6 @@ This index describes only code actually included now. Intended game modules are 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
 - [Minimal Godot Project Shell](features/project-shell.md)
+- [Comfortable First-Person Walking](features/walking.md)
 
-The minimal game shell is implemented, but terrain, walking, asset clients, and game test wrappers are not. As tasks add them, update this index without implying that planned files already work.
+The minimal game shell and the labelled walking fixture are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
