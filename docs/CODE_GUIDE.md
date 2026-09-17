@@ -30,6 +30,10 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/fixtures/terrain_samples.json | Stores the reviewed seed-42 surface values used to detect terrain drift and edge discontinuity | Coordinates, seed, recipe values, and tolerance are evidence-controlled | Consumed by the terrain suite |
 | tools/run_visual.py | Runs the non-headless fixed-route capture and rejects missing display, report, or image outputs | Output directory, timeout, and named route validation | `python tools/run_visual.py --output-dir artifacts/T015_visual_capture` |
 | tools/test_run_visual.py | Tests visual-wrapper failure and success validation with offline fixtures | Keep missing/empty/headless cases strict | `python -m unittest tools/test_run_visual.py` |
+| tools/asset_registry.py | Validates offline C06 request/catalogue records, local paths, hashes, and finite budgets before provider work | Stable IDs, lifecycle values, confined paths, and zero-job example budget | `python tools/asset_registry.py` |
+| tools/test_asset_registry.py | Tests duplicate IDs, approved-file requirements, traversal, bad states/hashes, and budget safety | Add independent invalid records; never authorize real work in fixtures | `python -m unittest tools/test_asset_registry.py` |
+| asset_requests/initial.json | Holds three request-only rock/tree/ground-cover examples with no claimed files | Prompts, dimensions, and hashes are reviewable request metadata | Consumed by asset_registry.py |
+| game/data/asset_catalogue.json | Empty approved runtime catalogue until assets pass technical and visual review | Add only approved local assets with provenance | Consumed by later asset tasks |
 | game/tests/visual_capture.gd | Waits for terrain readiness and saves the fixed route's real-renderer PNGs plus metadata report | Camera poses belong in visual_route.json; retain report fields | Invoked by run_visual.py |
 | game/tests/visual_route.json | Defines seed, recipe, four named camera poses, and the return view | Change poses only with a recorded visual-review reason | Consumed by visual_capture.gd |
 | game/tests/probes/terrain_api_probe.gd | Constructs the pinned Voxel Tools native classes, records reflected API names, and performs small generator/viewer/collision/diagnostic calls | Keep calls guarded by observed class methods; do not turn this probe into a terrain world | `godot --headless --path game --script res://tests/probes/terrain_api_probe.gd` |
@@ -65,5 +69,6 @@ Feature walkthroughs:
 - [Save and resume](features/save-resume.md)
 - [Terrain consistency checks](features/terrain-consistency.md)
 - [Repeatable terrain captures](features/visual-captures.md)
+- [Offline asset request registry](features/asset-registry.md)
 
 The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, pinned Voxel Tools API probe, T009 native terrain probe, and T010 coordinate feasibility probe are implemented. T010 found that logical coordinates remain exact at tested distances but the candidate native-origin handoff does not preserve terrain identity; backend acceptance remains downstream work. Asset clients, sound, saves, and the full world are not implemented.
