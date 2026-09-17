@@ -51,7 +51,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T014 | Add deterministic terrain and seam regression tests | DONE |
 | T015 | Create repeatable GPU scene captures | DONE |
 | T016 | Define and validate the asset request registry | DONE |
-| T017 | Implement a resumable Meshy client with offline tests | REVIEW |
+| T017 | Implement a resumable Meshy client with offline tests | DONE |
 | T018 | Script the GLB import and technical asset report | WAITING |
 | T019 | Generate and approve a tiny representative asset batch | WAITING |
 | T020 | Create the first configurable landform recipe | WAITING |
