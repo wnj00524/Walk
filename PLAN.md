@@ -49,7 +49,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T012a | Prove a GDScript chunked-heightmap terrain spike | DONE |
 | T013 | Save and resume the basic walker state | DONE |
 | T014 | Add deterministic terrain and seam regression tests | DONE |
-| T015 | Create repeatable GPU scene captures | REVIEW |
+| T015 | Create repeatable GPU scene captures | DONE |
 | T016 | Define and validate the asset request registry | WAITING |
 | T017 | Implement a resumable Meshy client with offline tests | WAITING |
 | T018 | Script the GLB import and technical asset report | WAITING |
