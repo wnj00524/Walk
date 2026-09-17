@@ -29,6 +29,9 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/probes/streamed_ground.gd | Waits for native ground, walks across checkpoints, and reports backend diagnostics | Checkpoints are probe distances; this script must not become production terrain logic | Streamed ground probe |
 | game/tests/probes/streamed_ground.tscn | Reproducible graphical scene containing terrain, viewer, lighting, and walker | Camera start and neutral lighting only | Graphical probe |
 | game/data/terrain_probe.json | Records the T009 seed, backend, budgets, and unavailable metrics | Keep aligned with the probe settings | Read by review |
+| game/tests/probes/coordinate_probe.gd | Measures logical cells, native noise samples, large-distance `Vector3` precision, boundary crossings, and a candidate origin handoff | Test distances and evidence tolerances only; do not turn it into production movement logic | `godot --headless --path game --script res://tests/probes/coordinate_probe.gd` |
+| game/tests/probes/coordinate_probe.tscn | Reuses the native terrain and walker in a graphical coordinate investigation scene | Camera start and neutral lighting only | Graphical coordinate probe |
+| game/src/terrain/terrain_service.gd | Owns the native terrain and provides a diagnostic sample using the configured noise generator | Keep the sample diagnostic-only; native collision remains authoritative | Coordinate probe and streamed-ground probe |
 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
@@ -38,5 +41,6 @@ Feature walkthroughs:
 - [Deterministic World Choices](features/deterministic-world-choices.md)
 - [Voxel Tools Terrain API](features/terrain-api.md)
 - [Script-Defined Streamed Ground Probe](features/streamed-ground-probe.md)
+- [Large-Distance Coordinate Probe](features/coordinates.md)
 
-The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, pinned Voxel Tools API probe, and T009 native terrain probe are implemented. T009 remains blocked pending completed native mesh/collision evidence. Asset clients, sound, saves, and the full world are not implemented.
+The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, pinned Voxel Tools API probe, T009 native terrain probe, and T010 coordinate feasibility probe are implemented. T010 found that logical coordinates remain exact at tested distances but the candidate native-origin handoff does not preserve terrain identity; backend acceptance remains downstream work. Asset clients, sound, saves, and the full world are not implemented.

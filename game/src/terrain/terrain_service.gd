@@ -1,4 +1,4 @@
-## Purpose: Owns the native streamed terrain used by the T009 probe.
+## Purpose: Owns the native streamed terrain and exposes bounded diagnostic samples.
 ## Why: Keeping Voxel Tools calls here prevents the player and presentation layers
 ##      from depending on backend-specific nodes or guessed surface heights.
 ## Reads: A world seed and bounded probe settings exported by the scene.
@@ -23,6 +23,7 @@ const STATUS_ERROR := "ERROR"
 
 var _terrain: VoxelLodTerrain
 var _viewer: VoxelViewer
+var _noise: FastNoiseLite
 var _statistics: Dictionary = {}
 var _configuration_error := ""
 var _ground_is_ready := false
@@ -74,6 +75,20 @@ func get_probe_configuration() -> Dictionary:
 		"native_class": "VoxelLodTerrain + VoxelGeneratorNoise + VoxelMesherTransvoxel + VoxelViewer",
 	}
 
+func sample_probe_height(world_x_m: float, world_z_m: float) -> Dictionary:
+	## Samples the same height mapping configured on VoxelGeneratorNoise.
+	## This is diagnostic-only: it does not provide a player floor or replace
+	## native collision. Invalid coordinates return ERROR rather than zero.
+	if not _configuration_error.is_empty():
+		return {"status": STATUS_ERROR, "error": _configuration_error}
+	if _noise == null or not is_finite(world_x_m) or not is_finite(world_z_m):
+		return {"status": STATUS_ERROR, "error": "sample coordinates must be finite metres"}
+	var normalized_height := (_noise.get_noise_2d(world_x_m, world_z_m) + 1.0) * 0.5
+	return {
+		"status": STATUS_READY,
+		"height_m": height_start_m + normalized_height * height_range_m,
+	}
+
 func _configure_native_terrain() -> String:
 	if not is_finite(view_distance_m) or view_distance_m <= 0.0:
 		return "view distance must be a finite positive number of metres"
@@ -94,10 +109,10 @@ func _configure_native_terrain() -> String:
 	material.roughness = 0.95
 	_terrain.set_material(material)
 	var generator := VoxelGeneratorNoise.new()
-	var noise := FastNoiseLite.new()
-	noise.seed = world_seed
-	noise.frequency = 0.006
-	generator.set_noise(noise)
+	_noise = FastNoiseLite.new()
+	_noise.seed = world_seed
+	_noise.frequency = 0.006
+	generator.set_noise(_noise)
 	generator.set_height_start(height_start_m)
 	generator.set_height_range(height_range_m)
 	_terrain.set_generator(generator)

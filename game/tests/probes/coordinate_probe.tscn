@@ -1,0 +1,35 @@
+; Purpose: Provides a reproducible scene for the bounded coordinate probe.
+; Why: It reuses the T009 native terrain service and first-person collision body.
+; Reads: TerrainService and the existing player scene at runtime.
+; Writes: Nothing persistent; this is an investigation fixture.
+; Safe changes: Camera start position and neutral lighting only.
+; Failure: Missing native classes or scene resources prevent startup.
+
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://src/terrain/terrain_service.gd" id="1_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+
+[sub_resource type="Environment" id="Environment_probe"]
+background_mode = 1
+background_color = Color(0.48, 0.64, 0.78, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.68, 0.76, 0.82, 1)
+ambient_light_energy = 0.8
+
+[node name="CoordinateProbe" type="Node3D"]
+
+[node name="Daylight" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_probe")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -25, 0)
+light_energy = 1.1
+
+[node name="TerrainService" type="Node3D" parent="."]
+script = ExtResource("1_terrain")
+
+[node name="Walker" parent="." instance=ExtResource("2_player")]
+position = Vector3(0, 32, 0)
+
+[node name="TerrainViewer" type="VoxelViewer" parent="Walker/Camera3D"]

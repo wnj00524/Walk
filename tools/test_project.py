@@ -120,7 +120,8 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| READY |', '| DONE |')
+        self.edit('PLAN.md', '| T011 | Freeze the terrain adapter contract from probe evidence | WAITING |',
+                  '| T011 | Freeze the terrain adapter contract from probe evidence | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:
