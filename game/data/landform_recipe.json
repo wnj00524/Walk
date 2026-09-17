@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "recipe_id": "temperate_gentle_landforms_v1",
+  "chunk_size_m": 256.0,
+  "view_chunks": 3,
+  "vertices_per_side": 32,
+  "frequency": 0.0035,
+  "height_start_m": -12.0,
+  "height_range_m": 48.0,
+  "synchronous_generation": false
+}

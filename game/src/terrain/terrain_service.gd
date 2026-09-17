@@ -9,6 +9,8 @@
 class_name TerrainService
 extends Node3D
 
+const LandformRecipeType = preload("res://src/world/landform_recipe.gd")
+
 signal ground_ready
 
 const STATUS_READY := "READY"
@@ -28,8 +30,17 @@ var _statistics: Dictionary = {}
 var _configuration_error := ""
 var _ground_is_ready := false
 var _last_ready_position := Vector3.ZERO
+var _recipe: Dictionary = {}
 
 func _ready() -> void:
+	var recipe_result := LandformRecipeType.load_default()
+	if not String(recipe_result.error).is_empty():
+		_configuration_error = recipe_result.error
+		push_error("TerrainService disabled: %s" % _configuration_error)
+		return
+	_recipe = recipe_result.recipe
+	height_start_m = float(_recipe.height_start_m)
+	height_range_m = float(_recipe.height_range_m)
 	_configuration_error = _configure_native_terrain()
 	if not _configuration_error.is_empty():
 		push_error("TerrainService disabled: %s" % _configuration_error)
@@ -111,7 +122,7 @@ func _configure_native_terrain() -> String:
 	var generator := VoxelGeneratorNoise.new()
 	_noise = FastNoiseLite.new()
 	_noise.seed = world_seed
-	_noise.frequency = 0.006
+	_noise.frequency = float(_recipe.frequency)
 	generator.set_noise(_noise)
 	generator.set_height_start(height_start_m)
 	generator.set_height_range(height_range_m)

@@ -56,12 +56,12 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After review, T012a is DONE and the next recipe task is READY."""
+        """After T020 implementation, the reviewed recipe is awaiting review."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T020'],
-                         f'Expected only T020 READY after implementation, got: {ready}')
+        self.assertEqual(ready, [],
+                         f'Expected no READY task while T020 is in REVIEW, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
