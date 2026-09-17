@@ -15,6 +15,7 @@ const WorldPositionChecks = preload("res://tests/test_world_position.gd")
 const WorldChoiceChecks = preload("res://tests/test_world_choices.gd")
 const ChunkTerrainProbe = preload("res://tests/probes/chunk_terrain_probe.gd")
 const WorldSaveChecks = preload("res://tests/test_world_save.gd")
+const TerrainConsistencyChecks = preload("res://tests/test_terrain_consistency.gd")
 
 var _executed := 0
 var _passed := 0
@@ -57,10 +58,16 @@ func _run() -> void:
 				Callable(WorldSaveChecks, "round_trip_example"),
 				Callable(WorldSaveChecks, "round_trip_large_cell"),
 				Callable(WorldSaveChecks, "rejects_unsupported_and_corrupt_without_replacing")
+			],
+			"terrain": [
+				Callable(TerrainConsistencyChecks, "pinned_surface_samples"),
+				Callable(TerrainConsistencyChecks, "shared_boundary_samples"),
+				Callable(TerrainConsistencyChecks, "repeat_generation_is_stable"),
+				Callable(TerrainConsistencyChecks, "changed_seed_changes_surface")
 			]
 		}
 		if not suites.has(suite_name):
-			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain, save." % suite_name)
+			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain, save, terrain." % suite_name)
 		else:
 			_run_suite(suite_name, suites[suite_name])
 	_finish()

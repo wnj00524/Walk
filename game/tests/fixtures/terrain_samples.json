@@ -1,0 +1,13 @@
+{
+  "seed": 42,
+  "frequency": 0.006,
+  "height_start_m": -16.0,
+  "height_range_m": 64.0,
+  "tolerance_m": 0.01,
+  "samples": [
+    {"name": "chunk_centre", "cell_x": "0", "cell_z": "0", "local_x_m": 128.0, "local_z_m": 128.0, "height_m": 20.0015707015991},
+    {"name": "west_boundary", "cell_x": "0", "cell_z": "0", "local_x_m": 255.999, "local_z_m": 64.0, "height_m": 3.67416763305664},
+    {"name": "east_boundary", "cell_x": "1", "cell_z": "0", "local_x_m": 0.0, "local_z_m": 64.0, "height_m": 3.67425346374512},
+    {"name": "negative_cell", "cell_x": "-1", "cell_z": "0", "local_x_m": 10.0, "local_z_m": 20.0, "height_m": 8.5795111656189}
+  ]
+}

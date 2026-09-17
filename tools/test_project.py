@@ -117,15 +117,15 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| T014 | Add deterministic terrain and seam regression tests | WAITING |',
-                  '| T014 | Add deterministic terrain and seam regression tests | READY |')
-        self.assertTrue(any('T014: dependency T012 is not DONE' in e
+        self.edit('PLAN.md', '| T015 | Create repeatable GPU scene captures | WAITING |',
+                  '| T015 | Create repeatable GPU scene captures | READY |')
+        self.assertTrue(any('T015: dependency T012 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| T014 | Add deterministic terrain and seam regression tests | WAITING |',
-                  '| T014 | Add deterministic terrain and seam regression tests | DONE |')
+        self.edit('PLAN.md', '| T015 | Create repeatable GPU scene captures | WAITING |',
+                  '| T015 | Create repeatable GPU scene captures | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:
