@@ -25,6 +25,10 @@ This index describes only code actually included now. Intended game modules are 
 | game/src/world/world_choices.gd | Turns a canonical world identity, cell, channel, and slot into a repeatable SHA-256 choice value | C02 payload fields, validation limits, and digest interpretation | `python tools/check_game.py --suite deterministic` |
 | game/tests/test_world_choices.gd | Compares deterministic choices with frozen seed vectors and checks order independence and rejection | Add independent vectors and invalid cases; do not generate expected values from production code | `python tools/check_game.py --suite deterministic` |
 | game/tests/probes/terrain_api_probe.gd | Constructs the pinned Voxel Tools native classes, records reflected API names, and performs small generator/viewer/collision/diagnostic calls | Keep calls guarded by observed class methods; do not turn this probe into a terrain world | `godot --headless --path game --script res://tests/probes/terrain_api_probe.gd` |
+| game/src/terrain/terrain_service.gd | Owns the native seeded smooth terrain, camera viewer, collision setting, readiness state, and backend diagnostics | Noise range, frequency, and view distance are metre settings; keep readiness tied to native work | Streamed ground probe |
+| game/tests/probes/streamed_ground.gd | Waits for native ground, walks across checkpoints, and reports backend diagnostics | Checkpoints are probe distances; this script must not become production terrain logic | Streamed ground probe |
+| game/tests/probes/streamed_ground.tscn | Reproducible graphical scene containing terrain, viewer, lighting, and walker | Camera start and neutral lighting only | Graphical probe |
+| game/data/terrain_probe.json | Records the T009 seed, backend, budgets, and unavailable metrics | Keep aligned with the probe settings | Read by review |
 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
@@ -33,5 +37,6 @@ Feature walkthroughs:
 - [Logical World Positions](features/logical-positions.md)
 - [Deterministic World Choices](features/deterministic-world-choices.md)
 - [Voxel Tools Terrain API](features/terrain-api.md)
+- [Script-Defined Streamed Ground Probe](features/streamed-ground-probe.md)
 
-The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, and pinned Voxel Tools API probe are implemented. Terrain generation, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
+The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, pinned Voxel Tools API probe, and T009 native terrain probe are implemented. T009 remains blocked pending completed native mesh/collision evidence. Asset clients, sound, saves, and the full world are not implemented.

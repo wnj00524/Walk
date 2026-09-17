@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "generator_version": "g1",
+  "world_seed": "42",
+  "backend": "VoxelTerrain",
+  "generator": "VoxelGeneratorNoise",
+  "view_distance_m": 96.0,
+  "height_start_m": -16.0,
+  "height_range_m": 64.0,
+  "noise_frequency_cycles_per_m": 0.006,
+  "collision_enabled": true,
+  "collision_lod_count": 1,
+  "probe_checkpoints_m": [0.0, 48.0, 96.0, 48.0, 0.0],
+  "diagnostic_fields": ["updated_blocks", "dropped_block_loads", "dropped_block_meshs"],
+  "unavailable_metrics": ["exact_resident_mesh_count", "exact_resident_collision_count"]
+}
