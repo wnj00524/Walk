@@ -11,8 +11,10 @@ readable without introducing a second height model.
 chunk size, density, frequency, or height range returns an error; it does not
 silently fall back to another landscape. The accepted logical-coordinate
 `ChunkTerrain` remains responsible for sampling, chunk streaming, collision,
-and origin-safe queries. The older native probe reads the same recipe for
-diagnostic parity but is not the accepted backend.
+and origin-safe queries. The main walker loads this recipe before configuring
+that service, so the playable prototype and tests use the same values. The
+older native probe reads the same recipe for diagnostic parity but is not the
+accepted backend.
 
 Run the focused checks with:
 

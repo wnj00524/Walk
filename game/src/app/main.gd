@@ -7,8 +7,8 @@
 extends Node3D
 
 const WorldSaveType = preload("res://src/persistence/world_save.gd")
+const LandformRecipeType = preload("res://src/world/landform_recipe.gd")
 const SAVE_PATH := "user://world_save.json"
-const TERRAIN_RECIPE := {"chunk_size_m": 256.0, "view_chunks": 3, "vertices_per_side": 32}
 
 var _terrain: ChunkTerrain
 var _walker: Walker
@@ -45,9 +45,14 @@ func _ready() -> void:
 		print("resume_loaded seed=%s cell_x=%s cell_z=%s local_x=%.3f local_z=%.3f" % [_identity.world_seed, saved_position.cell_x, saved_position.cell_z, _position.local_x_m, _position.local_z_m])
 	_origin_cell_x = _position.cell_x
 	_origin_cell_z = _position.cell_z
+	var recipe_result := LandformRecipeType.load_default()
+	if not String(recipe_result.error).is_empty():
+		_show_status("Landform recipe could not be loaded: %s" % recipe_result.error)
+		set_physics_process(false)
+		return
 	_terrain = ChunkTerrain.new()
 	add_child(_terrain)
-	var configured := _terrain.configure(_identity, TERRAIN_RECIPE)
+	var configured := _terrain.configure(_identity, recipe_result.recipe)
 	if configured.get("status") != "READY":
 		_show_status("Terrain could not start: %s" % configured.get("error", "unknown error"))
 		set_physics_process(false)
