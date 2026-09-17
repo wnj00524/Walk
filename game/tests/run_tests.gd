@@ -14,6 +14,7 @@ const PlayerChecks = preload("res://tests/test_player.gd")
 const WorldPositionChecks = preload("res://tests/test_world_position.gd")
 const WorldChoiceChecks = preload("res://tests/test_world_choices.gd")
 const ChunkTerrainProbe = preload("res://tests/probes/chunk_terrain_probe.gd")
+const WorldSaveChecks = preload("res://tests/test_world_save.gd")
 
 var _executed := 0
 var _passed := 0
@@ -51,10 +52,15 @@ func _run() -> void:
 				Callable(ChunkTerrainProbe, "identity_check_one"),
 				Callable(ChunkTerrainProbe, "identity_check_two"),
 				Callable(ChunkTerrainProbe, "identity_check_three")
+			],
+			"save": [
+				Callable(WorldSaveChecks, "round_trip_example"),
+				Callable(WorldSaveChecks, "round_trip_large_cell"),
+				Callable(WorldSaveChecks, "rejects_unsupported_and_corrupt_without_replacing")
 			]
 		}
 		if not suites.has(suite_name):
-			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain." % suite_name)
+			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain, save." % suite_name)
 		else:
 			_run_suite(suite_name, suites[suite_name])
 	_finish()

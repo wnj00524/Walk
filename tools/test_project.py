@@ -55,8 +55,8 @@ class ProjectToolTests(unittest.TestCase):
         """The supplied pack starts structurally consistent, without claiming runtime success."""
         self.assertEqual(project.validate(self.root), [])
 
-    def test_plan_has_37_tasks_and_spike_is_in_review(self) -> None:
-        """After implementation, T012a is REVIEW and no unassigned task is READY."""
+    def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
+        """After review, T012a is DONE and no unassigned task is READY."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
@@ -64,7 +64,7 @@ class ProjectToolTests(unittest.TestCase):
                          f'Expected no unassigned READY tasks after implementation, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
-        self.assertEqual(states['T012a'], 'REVIEW')
+        self.assertEqual(states['T012a'], 'DONE')
 
     def test_blocked_brief_is_inspection_only(self) -> None:
         """A blocked gate can be inspected without becoming a normal assignment."""
@@ -77,12 +77,12 @@ class ProjectToolTests(unittest.TestCase):
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T013')
+            project.make_brief(self.root, 'T014')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T013', inspect=True))
+                      project.make_brief(self.root, 'T014', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -117,15 +117,15 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| Save and resume the basic walker state | WAITING |',
-                  '| Save and resume the basic walker state | READY |')
-        self.assertTrue(any('T013: dependency T012 is not DONE' in e
+        self.edit('PLAN.md', '| T014 | Add deterministic terrain and seam regression tests | WAITING |',
+                  '| T014 | Add deterministic terrain and seam regression tests | READY |')
+        self.assertTrue(any('T014: dependency T012 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| T013 | Save and resume the basic walker state | WAITING |',
-                  '| T013 | Save and resume the basic walker state | DONE |')
+        self.edit('PLAN.md', '| T014 | Add deterministic terrain and seam regression tests | WAITING |',
+                  '| T014 | Add deterministic terrain and seam regression tests | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:
@@ -200,7 +200,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T013'])
+            code = project.main(['--root', str(self.root), 'brief', 'T014'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 
