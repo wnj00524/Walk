@@ -24,13 +24,70 @@ Channel is a non-empty lowercase ASCII identifier using letters, digits or under
 
 This controls application-level discrete choices, not the plugin's noise internals. The terrain graph's seed mapping and numerical tolerance must be separately pinned and tested in T009-T014. Promise repeatability for supported pinned versions, not bit-identical floating-point meshes on every possible device. A generator/content update must not silently replace an existing world's landscape.
 
-## C03 - Terrain boundary (design contract)
+## C03 - Terrain boundary (pinned adapter contract)
 
-`TerrainService` is the only owner of backend APIs. It must support: configure a world identity and recipe; receive the viewer's logical position; expose ground-readiness near a location; report safe surface information; expose diagnostic counters; and shut down cleanly. Exact method signatures and event names are written by T008-T012 before downstream tasks are made READY.
+`TerrainService` is the only owner of backend APIs. The downstream adapter shape
+is frozen, but it is not yet an accepted large-world implementation. The public
+operations are typed GDScript methods:
 
-A surface query distinguishes READY, PENDING and OUTSIDE_TESTED_SUPPORT/ERROR. PENDING is not height zero. Include a normal and height only when valid. Spawn/movement must not enter terrain without ready collision. Scene-tree changes occur on the main thread. A background completion from an old world or generation epoch must be discarded.
+```gdscript
+func configure(world_identity: Dictionary, recipe: Dictionary) -> Dictionary
+func update_viewer(logical_position: WorldPosition) -> void
+func get_ground_state(logical_position: WorldPosition) -> String
+func query_surface(logical_position: WorldPosition) -> Dictionary
+func get_diagnostics() -> Dictionary
+func shutdown() -> void
+```
 
-The backend owns streaming and its configured budgets. Do not layer an unrelated competing chunk scheduler over it. Application vegetation residency may have its own bounded spatial batches, but derives coverage from the same viewer position.
+`configure` validates the C02 identity and recipe, creates a new generation
+epoch, and returns `{"status": "READY"}` or `{"status": "ERROR", "error": String}`.
+`update_viewer` is the only operation that changes the native viewer target; it
+must reject non-finite local coordinates and positions outside the adapter's
+currently supported visual envelope. `get_ground_state` returns exactly
+`READY`, `PENDING`, `OUTSIDE_TESTED_SUPPORT`, or `ERROR`. `query_surface` returns
+the state and may include `height_m` and `normal` only for a valid READY sample;
+PENDING is never height zero. `get_diagnostics` returns backend-owned counters
+plus the active epoch, last logical viewer position, and configuration error.
+`shutdown` stops future work, disconnects the service, and is safe to call once.
+
+The current T009/T010 implementation is a probe, not all of this contract:
+`is_ground_ready`, `query_ground(Vector3)`, `get_statistics`,
+`get_probe_configuration`, and `sample_probe_height(float, float)` are the
+observed temporary operations. T012 is blocked until a real adapter implements
+the frozen shape and demonstrates mesh, collision, export, and identity
+continuity. No unobserved native method is implied by this contract.
+
+States and safety rules are fixed. Spawn/movement must not enter terrain
+without ready collision. Scene-tree and native-node changes occur on the main
+thread; native worker completion may return data, but only the main thread
+applies it. Every completion carries the configure epoch and is discarded when
+it is not the active epoch. The backend owns streaming and its configured
+budgets; no second application chunk scheduler may be layered over it.
+
+The accepted coordinate strategy is logical C01 positions plus a local visual
+origin. The pinned Voxel Tools 1.7 probe demonstrated exact logical cells at
+the tested distances, but did not demonstrate a native generator-origin offset.
+Therefore the adapter must not silently recenter a Voxel Tools terrain. Until
+an identity-preserving offset or an alternative backend is proven, positions
+outside the tested local visual envelope return OUTSIDE_TESTED_SUPPORT and T012
+cannot accept this backend for the complete walk.
+
+For the current noise probe, the graph seed mapping is the direct assignment
+`FastNoiseLite.seed = world_seed`, with `world_seed` the canonical C02 unsigned
+decimal value converted to the pinned native integer range. The probe settings
+are frequency `0.006` cycles/metre, `height_start_m = -16`, and
+`height_range_m = 64`; these are diagnostic recipe values, not a release world
+format. A future graph generator must record its own mapping before replacing
+this probe.
+
+Required regression owners are: `game/tests/test_world_position.gd` for logical
+conversion and finite input; a new terrain adapter integration suite owned by
+`game/src/terrain/terrain_service.gd` for configure/state/epoch behaviour; the
+T014 terrain regression for shared-boundary samples and stale completions; and
+the T010 coordinate probe (or its replacement spike) for large-distance
+identity. Comparison tolerances remain `0.01 m` for visual position and
+`0.0001 m` for the diagnostic height comparison used by T010; these tolerances
+are evidence thresholds, not proof of backend acceptance.
 
 ## C04 - Placement records
 

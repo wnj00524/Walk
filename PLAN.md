@@ -43,9 +43,9 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T007 | Implement deterministic discrete world choices | DONE |
 | T008 | Load the terrain add-on and verify its actual API | DONE |
 | T009 | Build one script-defined smooth streamed terrain probe | DONE |
-| T010 | Probe large-distance identity and coordinate handling | READY |
-| T011 | Freeze the terrain adapter contract from probe evidence | WAITING |
-| T012 | Accept or reject the terrain foundation | WAITING |
+| T010 | Probe large-distance identity and coordinate handling | DONE |
+| T011 | Freeze the terrain adapter contract from probe evidence | DONE |
+| T012 | Accept or reject the terrain foundation | READY |
 | T013 | Save and resume the basic walker state | WAITING |
 | T014 | Add deterministic terrain and seam regression tests | WAITING |
 | T015 | Create repeatable GPU scene captures | WAITING |

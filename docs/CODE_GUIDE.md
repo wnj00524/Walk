@@ -33,6 +33,11 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/probes/coordinate_probe.tscn | Reuses the native terrain and walker in a graphical coordinate investigation scene | Camera start and neutral lighting only | Graphical coordinate probe |
 | game/src/terrain/terrain_service.gd | Owns the native terrain and provides a diagnostic sample using the configured noise generator | Keep the sample diagnostic-only; native collision remains authoritative | Coordinate probe and streamed-ground probe |
 
+T011 records the future terrain adapter boundary in
+[docs/CONTRACTS.md](CONTRACTS.md). It is deliberately not described as an
+implemented API: the current service owns only the probe operations above, and
+T012 is blocked until an identity-preserving backend strategy exists.
+
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
 - [Minimal Godot Project Shell](features/project-shell.md)

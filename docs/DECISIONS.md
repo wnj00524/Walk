@@ -18,6 +18,7 @@ Do not present proposed defaults as user-confirmed choices.
 | D12 | Exact Godot/plugin versions, coordinate strategy, terrain material API, tested draw distance | Unresolved until compatibility/probe tasks | Evidence required, not guesses |
 | D13 | Suggested 1080p/60 FPS target; proposed bounded-memory test tolerances | Provisional targets, hardware not supplied | Record test hardware before performance gate |
 | D14 | Assets are downloaded once, inspected by scripts and visual review, then packaged locally | Asset-pipeline design | No bulk regeneration without budget approval |
+| D15 | Freeze a terrain adapter boundary around logical positions, explicit readiness states, generation epochs, main-thread application, and backend diagnostics; do not accept the pinned Voxel Tools probe for large-world recentering | T009/T010 proved local native setup and logical coordinate arithmetic, but no identity-preserving generator offset; T010 observed a 6.926433 m sample delta after an origin move | T012 remains blocked until an adapter or separately approved alternative spike proves continuity, collision, export, and identity |
 
 ## Backend rejection procedure
 

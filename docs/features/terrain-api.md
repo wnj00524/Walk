@@ -23,6 +23,29 @@ The inspected graph resource exposes `graph_data`, `compile`, and
 or `set_node_param` methods. Later graph construction must therefore use the
 actual graph-data contract established by a focused follow-up task.
 
+## Frozen adapter boundary
+
+T011 freezes the downstream `TerrainService` shape without claiming that the
+current probe implements it. The service will expose `configure`,
+`update_viewer`, `get_ground_state`, `query_surface`, `get_diagnostics`, and
+`shutdown`, using C01 logical positions and the states READY, PENDING,
+OUTSIDE_TESTED_SUPPORT, and ERROR. Configuration creates a generation epoch;
+old native completions are ignored, and all scene-tree/native-node changes are
+performed on the main thread.
+
+The current probe only proves the temporary methods listed in the code guide.
+It also proves direct `world_seed` assignment to `FastNoiseLite.seed`, but not a
+native generator-origin offset. T010 measured a 6.926433 m sample change after
+an origin move without such an offset. As a result, the backend is not accepted
+for large-world recentering: a future implementation must return
+OUTSIDE_TESTED_SUPPORT beyond its proven local envelope or use a separately
+approved alternative spike. T012 remains blocked until continuity, collision,
+export, and identity are demonstrated.
+
+The `0.01 m` visual-position and `0.0001 m` diagnostic-height tolerances belong
+to the bounded probes only. They are not a promise of bit-identical native
+meshes across hardware.
+
 ## Which files own the behaviour
 
 - `game/addons/voxel/`: the exact pinned Voxel Tools 1.7 GDExtension bundle and
