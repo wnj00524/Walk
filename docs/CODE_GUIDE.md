@@ -38,6 +38,11 @@ T011 records the future terrain adapter boundary in
 implemented API: the current service owns only the probe operations above, and
 T012 is blocked until an identity-preserving backend strategy exists.
 
+T012's gate record in [docs/evidence/T012.md](evidence/T012.md) explains why the
+candidate is rejected. `docs/toolchain.lock.json` remains useful as a pinned
+probe record, but its `backend_gate` flag is false and later terrain work must
+wait for a separately approved alternative spike.
+
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
 - [Minimal Godot Project Shell](features/project-shell.md)

@@ -55,17 +55,18 @@ class ProjectToolTests(unittest.TestCase):
         """The supplied pack starts structurally consistent, without claiming runtime success."""
         self.assertEqual(project.validate(self.root), [])
 
-    def test_plan_has_36_tasks_and_only_one_ready(self) -> None:
-        """No task is accidentally dispatchable before its prerequisites are DONE."""
+    def test_plan_has_36_tasks_and_gate_blocks_dispatch(self) -> None:
+        """A rejected foundation gate leaves no task accidentally dispatchable."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 36)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T012'], f'Expected exactly one READY task, got: {ready}')
+        self.assertEqual(ready, [], f'Expected no READY task after T012 rejection, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
+        self.assertEqual(states['T012'], 'BLOCKED')
 
-    def test_ready_brief_contains_rules_and_one_card(self) -> None:
-        """A ready assignment contains required rules without embedding the whole backlog."""
-        brief = project.make_brief(self.root, 'T012')
+    def test_blocked_brief_is_inspection_only(self) -> None:
+        """A blocked gate can be inspected without becoming a normal assignment."""
+        brief = project.make_brief(self.root, 'T012', inspect=True)
         self.assertIn('Repository rules for coding agents', brief)
         self.assertIn('T012 - Accept or reject the terrain foundation', brief)
         self.assertNotIn('# T036 -', brief)
@@ -143,7 +144,7 @@ class ProjectToolTests(unittest.TestCase):
     def test_brief_is_not_silently_truncated(self) -> None:
         """A size limit cannot silently remove safety or acceptance instructions."""
         with self.assertRaisesRegex(project.PlanError, 'above limit'):
-            project.make_brief(self.root, 'T012', max_bytes=2048)
+            project.make_brief(self.root, 'T012', inspect=True, max_bytes=2048)
 
     def test_unknown_task_is_rejected(self) -> None:
         """The helper never guesses an assignment from an unknown ID."""

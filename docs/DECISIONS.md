@@ -19,6 +19,7 @@ Do not present proposed defaults as user-confirmed choices.
 | D13 | Suggested 1080p/60 FPS target; proposed bounded-memory test tolerances | Provisional targets, hardware not supplied | Record test hardware before performance gate |
 | D14 | Assets are downloaded once, inspected by scripts and visual review, then packaged locally | Asset-pipeline design | No bulk regeneration without budget approval |
 | D15 | Freeze a terrain adapter boundary around logical positions, explicit readiness states, generation epochs, main-thread application, and backend diagnostics; do not accept the pinned Voxel Tools probe for large-world recentering | T009/T010 proved local native setup and logical coordinate arithmetic, but no identity-preserving generator offset; T010 observed a 6.926433 m sample delta after an origin move | T012 remains blocked until an adapter or separately approved alternative spike proves continuity, collision, export, and identity |
+| D16 | Reject the pinned Voxel Tools terrain foundation for the current product gate; retain the bundle only as a documented probe candidate while dependent terrain work is stopped | T012 reviewed T008-T011 evidence: no Windows export launch, no bounded headless mesh/collision completion, and a 6.926433 m identity delta after the tested origin move | Keep `checks.backend_gate` false; create a separate bounded alternative-backend spike before changing C03 or making T013+ terrain-dependent work READY |
 
 ## Backend rejection procedure
 

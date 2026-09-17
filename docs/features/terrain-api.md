@@ -46,6 +46,15 @@ The `0.01 m` visual-position and `0.0001 m` diagnostic-height tolerances belong
 to the bounded probes only. They are not a promise of bit-identical native
 meshes across hardware.
 
+## Foundation gate result
+
+T012 rejected this backend for the product foundation. The pinned Windows
+bundle loads and the local probe renders, but there is no accessible Windows
+export launch, no completed native mesh/collision evidence from the bounded
+headless probe, and no identity-preserving large-world handoff. The candidate
+remains recorded for comparison only; `checks.backend_gate` is false and no
+dependent terrain implementation may treat this probe as accepted.
+
 ## Which files own the behaviour
 
 - `game/addons/voxel/`: the exact pinned Voxel Tools 1.7 GDExtension bundle and

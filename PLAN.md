@@ -45,7 +45,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T009 | Build one script-defined smooth streamed terrain probe | DONE |
 | T010 | Probe large-distance identity and coordinate handling | DONE |
 | T011 | Freeze the terrain adapter contract from probe evidence | DONE |
-| T012 | Accept or reject the terrain foundation | READY |
+| T012 | Accept or reject the terrain foundation | BLOCKED |
 | T013 | Save and resume the basic walker state | WAITING |
 | T014 | Add deterministic terrain and seam regression tests | WAITING |
 | T015 | Create repeatable GPU scene captures | WAITING |

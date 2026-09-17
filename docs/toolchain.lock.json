@@ -1,6 +1,6 @@
 {
-  "status": "CANDIDATE_RECORDED",
-  "note": "T008 verified runtime loading and the reflected Voxel Tools API for the pinned Windows bundle. Terrain backend suitability, visual quality, large-distance identity, and export launch remain subject to later tasks.",
+  "status": "REJECTED_BY_T012",
+  "note": "T008 verified runtime loading and the reflected Voxel Tools API for the pinned Windows bundle. T012 rejected the terrain foundation: export launch, native mesh/collision completion, and identity-preserving large-world handoff are not proven; backend_gate remains false.",
   "godot": {
     "version": "4.6.2-stable",
     "edition": "official",
