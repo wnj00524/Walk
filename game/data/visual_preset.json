@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "preset_id": "temperate_daylight_v1",
+  "terrain": {
+    "albedo_color": [0.12, 0.18, 0.10, 1.0],
+    "roughness": 0.96,
+    "texture_scale": 6.0
+  },
+  "daylight": {
+    "background_color": [0.48, 0.64, 0.78, 1.0],
+    "ambient_color": [0.65, 0.75, 0.82, 1.0],
+    "ambient_energy": 0.38,
+    "light_color": [1.0, 0.93, 0.80, 1.0],
+    "light_intensity": 0.78,
+    "shadow_enabled": true,
+    "fog_enabled": true,
+    "fog_color": [0.55, 0.67, 0.70, 1.0],
+    "fog_density": 0.0015
+  }
+}

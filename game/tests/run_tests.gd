@@ -19,6 +19,7 @@ const TerrainConsistencyChecks = preload("res://tests/test_terrain_consistency.g
 const LandformRecipeChecks = preload("res://tests/test_landform_recipe.gd")
 const PlacementRulesChecks = preload("res://tests/test_placement_rules.gd")
 const VegetationBatchesChecks = preload("res://tests/test_vegetation_batches.gd")
+const VisualPresetChecks = preload("res://tests/test_visual_preset.gd")
 
 var _executed := 0
 var _passed := 0
@@ -88,6 +89,13 @@ func _run() -> void:
 				Callable(VegetationBatchesChecks, "rejects_stale_batches"),
 				Callable(VegetationBatchesChecks, "rejects_invalid_records_without_fallback"),
 				Callable(VegetationBatchesChecks, "renders_approved_runtime_assets")
+			],
+			"visual_preset": [
+				Callable(VisualPresetChecks, "loads_reviewed_preset"),
+				Callable(VisualPresetChecks, "rejects_invalid_texture_scale"),
+				Callable(VisualPresetChecks, "rejects_invalid_light_intensity"),
+				Callable(VisualPresetChecks, "rejects_invalid_fog_density"),
+				Callable(VisualPresetChecks, "creates_consistent_material_and_daylight")
 			]
 		}
 		if not suites.has(suite_name):

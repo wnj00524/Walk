@@ -56,15 +56,15 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After T022 review, T023 is the only task ready to implement."""
+        """After T023 implementation, no later task is ready before review."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T023'],
-                         f'Expected only T023 READY, got: {ready}')
+        self.assertEqual(ready, [], f'Expected no READY tasks, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
+        self.assertEqual(states['T023'], 'REVIEW')
 
     def test_blocked_brief_is_inspection_only(self) -> None:
         """A blocked gate can be inspected without becoming a normal assignment."""
@@ -74,13 +74,13 @@ class ProjectToolTests(unittest.TestCase):
         self.assertNotIn('# T036 -', brief)
         self.assertLessEqual(len(brief.encode()), 24000)
 
-    def test_waiting_brief_is_refused(self) -> None:
-        """A waiting task cannot be handed out as a normal implementation assignment."""
+    def test_review_brief_is_refused(self) -> None:
+        """A review task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
             project.make_brief(self.root, 'T023')
 
-    def test_waiting_task_can_be_inspected(self) -> None:
-        """Coordinators can read later work only with an explicit non-implementation label."""
+    def test_review_task_can_be_inspected(self) -> None:
+        """Review work can be inspected only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
                       project.make_brief(self.root, 'T023', inspect=True))
 

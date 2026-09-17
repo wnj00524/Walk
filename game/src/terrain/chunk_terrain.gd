@@ -7,6 +7,8 @@
 class_name ChunkTerrain
 extends Node3D
 
+const EnvironmentSetupType = preload("res://src/presentation/environment_setup.gd")
+
 const STATUS_READY := "READY"
 const STATUS_PENDING := "PENDING"
 const STATUS_OUTSIDE := "OUTSIDE_TESTED_SUPPORT"
@@ -33,6 +35,7 @@ var _visual_origin_chunk := Vector2i.ZERO
 var _chunks: Dictionary = {}
 var _pending_jobs: Dictionary = {}
 var _synchronous_generation := false
+var _visual_preset: Dictionary = {}
 
 func configure(world_identity: Dictionary, recipe: Dictionary) -> Dictionary:
 	_epoch += 1
@@ -48,6 +51,11 @@ func configure(world_identity: Dictionary, recipe: Dictionary) -> Dictionary:
 	if not error.is_empty():
 		_configuration_error = error
 		return {"status": STATUS_ERROR, "error": error}
+	var visual_result := EnvironmentSetupType.load_preset()
+	if visual_result.get("status") != "READY":
+		_configuration_error = String(visual_result.get("error", "visual preset could not load"))
+		return {"status": STATUS_ERROR, "error": _configuration_error}
+	_visual_preset = visual_result.preset
 	world_seed = seed_value
 	chunk_size_m = float(recipe.get("chunk_size_m", 256.0))
 	view_chunks = int(recipe.get("view_chunks", 3))
@@ -60,6 +68,10 @@ func configure(world_identity: Dictionary, recipe: Dictionary) -> Dictionary:
 	_noise.seed = world_seed
 	_noise.frequency = _frequency
 	_configured = true
+	_apply_visual_preset()
+	if not _configuration_error.is_empty():
+		_configured = false
+		return {"status": STATUS_ERROR, "error": _configuration_error}
 	_viewer_position = null
 	return {"status": STATUS_READY}
 
@@ -178,9 +190,7 @@ func _build_chunk_node(key: Vector2i, heights: PackedFloat32Array) -> Node3D:
 	root.name = "Chunk_%d_%d" % [key.x, key.y]
 	var mesh_instance := MeshInstance3D.new()
 	mesh_instance.mesh = _build_mesh(heights)
-	var material := StandardMaterial3D.new()
-	material.albedo_color = Color(0.28, 0.38, 0.24, 1.0)
-	material.roughness = 0.95
+	var material := EnvironmentSetupType.create_terrain_material(_visual_preset)
 	mesh_instance.material_override = material
 	root.add_child(mesh_instance)
 	var body := StaticBody3D.new()
@@ -195,6 +205,18 @@ func _build_chunk_node(key: Vector2i, heights: PackedFloat32Array) -> Node3D:
 	body.add_child(collision)
 	root.add_child(body)
 	return root
+
+func _apply_visual_preset() -> void:
+	for child in get_children():
+		if child.name == "TemperateDaylight" or child.name == "TemperateSun":
+			child.queue_free()
+	var environment := EnvironmentSetupType.create_environment(_visual_preset)
+	var sun := EnvironmentSetupType.create_sun(_visual_preset)
+	if environment == null or sun == null:
+		_configuration_error = "visual preset could not create daylight objects"
+		return
+	add_child(environment)
+	add_child(sun)
 
 func _build_mesh(heights: PackedFloat32Array) -> ArrayMesh:
 	var positions := PackedVector3Array()
