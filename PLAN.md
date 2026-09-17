@@ -53,7 +53,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T016 | Define and validate the asset request registry | DONE |
 | T017 | Implement a resumable Meshy client with offline tests | DONE |
 | T018 | Script the GLB import and technical asset report | DONE |
-| T019 | Generate and approve a tiny representative asset batch | READY |
+| T019 | Generate and approve a tiny representative asset batch | BLOCKED |
 | T020 | Create the first configurable landform recipe | WAITING |
 | T021 | Generate deterministic plant and rock placement data | WAITING |
 | T022 | Render bounded spatial vegetation batches | WAITING |
