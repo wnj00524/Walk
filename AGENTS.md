@@ -30,7 +30,7 @@ Do not weaken assertions, replace expected values with production-generated valu
 
 ## Keys, paid work and destructive operations
 
-Never request keys in chat, commit them, print them, copy them into the game or include them in a brief. Read development keys from environment variables. Tests are offline by default. Paid generation is disabled until the owner supplies a finite local budget and explicitly approves the batch. An API key alone is not spend approval. Keep local receipts; reuse existing jobs. Never automatically resubmit a paid POST after an ambiguous timeout. Do not delete remote jobs or assets. Never reset unrelated work or force-push.
+Never request keys in chat, commit them, print them, copy them into the game or include them in a brief. Read development keys from environment variables or the local `.env` file in the repository root (`MESHY_API_KEY` and `ELEVENLABS_API_KEY`). Tests are offline by default. Paid generation is disabled until the owner supplies a finite local budget and explicitly approves the batch. An API key alone is not spend approval. Keep local receipts; reuse existing jobs. Never automatically resubmit a paid POST after an ambiguous timeout. Do not delete remote jobs or assets. Never reset unrelated work or force-push.
 
 ## Stop rather than guess
 

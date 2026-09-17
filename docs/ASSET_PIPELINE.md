@@ -32,7 +32,7 @@ Do not generate one long mixed forest recording containing everything. Separate 
 
 ## Safe service clients
 
-Use environment variables MESHY_API_KEY and ELEVENLABS_API_KEY. Routine tests use fixture responses and a fake transport, never real calls. The CLI defaults to dry-run. A real run additionally requires `--execute`, an explicitly selected local approved budget file, and a named batch. The example budget in this pack authorises zero jobs.
+Use environment variables `MESHY_API_KEY` and `ELEVENLABS_API_KEY` (loaded from the repository root `.env` file or process environment). Routine tests use fixture responses and a fake transport, never real calls. The CLI defaults to dry-run. A real run additionally requires `--execute`, an explicitly selected local approved budget file, and a named batch. The example budget in this pack authorises zero jobs.
 
 Persist a request hash and a submission intent before a paid call. Persist a received provider task ID immediately. For asynchronous Meshy work, resume polling an existing job. GET/status/download can have bounded backoff where appropriate. If a paid submission times out after it may have been accepted, mark SUBMISSION_UNKNOWN and reconcile through supported provider lookup/history or owner review; do not submit again automatically.
 
