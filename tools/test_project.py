@@ -56,12 +56,12 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After T020 implementation, the reviewed recipe is awaiting review."""
+        """After T020 review, T021 is the only task ready to implement."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, [],
-                         f'Expected no READY task while T020 is in REVIEW, got: {ready}')
+        self.assertEqual(ready, ['T021'],
+                         f'Expected only T021 READY, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
@@ -117,15 +117,15 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| T021 | Generate deterministic plant and rock placement data | WAITING |',
-                  '| T021 | Generate deterministic plant and rock placement data | READY |')
-        self.assertTrue(any('T021: dependency T020 is not DONE' in e
+        self.edit('PLAN.md', '| T022 | Render bounded spatial vegetation batches | WAITING |',
+                  '| T022 | Render bounded spatial vegetation batches | READY |')
+        self.assertTrue(any('T022: dependency T021 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| T021 | Generate deterministic plant and rock placement data | WAITING |',
-                  '| T021 | Generate deterministic plant and rock placement data | DONE |')
+        self.edit('PLAN.md', '| T022 | Render bounded spatial vegetation batches | WAITING |',
+                  '| T022 | Render bounded spatial vegetation batches | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:
