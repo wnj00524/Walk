@@ -42,8 +42,12 @@ func _ready() -> void:
 		return
 	print(JSON.stringify({"mesh_instances": mesh_count, "bounds_min": bounds.position, "bounds_size": bounds.size, "blender_dependency": false}))
 	var output_dir := _argument_value("--output-dir", "artifacts/T019_" + arguments[0].get_file().get_basename())
-	if not output_dir.is_empty() and DisplayServer.get_name().to_lower() != "headless":
-		DirAccess.make_dir_recursive_absolute(output_dir)
+	if not output_dir.is_empty():
+		output_dir = ProjectSettings.globalize_path(output_dir)
+		if DirAccess.make_dir_recursive_absolute(output_dir) != OK:
+			push_error("could not create capture directory: " + output_dir)
+			get_tree().quit(1)
+			return
 		var center := bounds.position + bounds.size * 0.5
 		for view: Dictionary in [{"name": "close", "distance": 2.5}, {"name": "mid", "distance": 6.0}, {"name": "far", "distance": 14.0}]:
 			camera.look_at_from_position(center + Vector3(0.0, bounds.size.y * 0.35, float(view["distance"])), center)

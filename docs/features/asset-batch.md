@@ -3,8 +3,8 @@
 ## What the walker notices
 
 No new asset is visible in the runtime walk yet. Three generated candidates
-are retained for review, while the runtime catalogue remains empty until the
-owner accepts their grounded shape, materials, silhouette, and distance views.
+were reviewed and marked REVISE because the captures show untextured white
+materials; the runtime catalogue remains empty.
 
 ## How it works, in ordinary language
 
@@ -34,5 +34,5 @@ views require review rather than silently approving the model.
 ## How it is tested
 
 Use `python tools/asset_registry.py` and `python tools/import_asset.py` for
-offline validation. T019 remains blocked until the owner can review identical
-close/mid/far game-lighting views and record ACCEPT or REVISE for each asset.
+offline validation. T019 records REVISE for all three candidates and does not
+promote them; any future regeneration must use the same review path.
