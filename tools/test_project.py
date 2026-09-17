@@ -77,12 +77,12 @@ class ProjectToolTests(unittest.TestCase):
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T017')
+            project.make_brief(self.root, 'T018')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T017', inspect=True))
+                      project.make_brief(self.root, 'T018', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -117,15 +117,15 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
-        self.edit('PLAN.md', '| T017 | Implement a resumable Meshy client with offline tests | WAITING |',
-                  '| T017 | Implement a resumable Meshy client with offline tests | READY |')
-        self.assertTrue(any('T017: dependency T016 is not DONE' in e
+        self.edit('PLAN.md', '| T019 | Generate and approve a tiny representative asset batch | WAITING |',
+                  '| T019 | Generate and approve a tiny representative asset batch | READY |')
+        self.assertTrue(any('T019: dependency T018 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
         """A DONE label must at least point to retained evidence; content still needs review."""
-        self.edit('PLAN.md', '| T017 | Implement a resumable Meshy client with offline tests | WAITING |',
-                  '| T017 | Implement a resumable Meshy client with offline tests | DONE |')
+        self.edit('PLAN.md', '| T019 | Generate and approve a tiny representative asset batch | WAITING |',
+                  '| T019 | Generate and approve a tiny representative asset batch | DONE |')
         self.assertTrue(any('DONE requires' in e for e in project.validate(self.root)))
 
     def test_outside_read_path_is_rejected(self) -> None:
@@ -200,7 +200,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T017'])
+            code = project.main(['--root', str(self.root), 'brief', 'T018'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 

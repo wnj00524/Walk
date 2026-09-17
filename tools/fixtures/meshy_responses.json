@@ -1,0 +1,8 @@
+{
+  "create": {"status": 202, "body": {"result": "task-demo-001"}},
+  "pending": {"status": 200, "body": {"id": "task-demo-001", "status": "IN_PROGRESS", "progress": 42}},
+  "success": {"status": 200, "body": {"id": "task-demo-001", "status": "SUCCEEDED", "model_urls": {"glb": "https://assets.meshy.ai/tasks/task-demo-001/model.glb"}}},
+  "failure": {"status": 200, "body": {"id": "task-demo-001", "status": "FAILED", "task_error": {"message": "fixture failure"}}},
+  "errors": {"401": {"status": 401, "body": {"message": "unauthorized"}}, "402": {"status": 402, "body": {"message": "payment required"}}, "429": {"status": 429, "body": {"message": "rate limited"}}},
+  "download": {"status": 200, "headers": {"Content-Length": "4"}, "body_utf8": "GLB!"}
+}
