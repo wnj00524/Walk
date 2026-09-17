@@ -56,7 +56,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T019 | Generate and approve a tiny representative asset batch | DONE |
 | T020 | Create the first configurable landform recipe | DONE |
 | T021 | Generate deterministic plant and rock placement data | DONE |
-| T022 | Render bounded spatial vegetation batches | REVIEW |
+| T022 | Render bounded spatial vegetation batches | BLOCKED |
 | T023 | Set consistent terrain materials and daylight | WAITING |
 | T024 | Accept the first procedural visual-quality slice | WAITING |
 | T025 | Implement a guarded ElevenLabs sound client | WAITING |
