@@ -6,6 +6,8 @@ This index describes only code actually included now. Intended game modules are 
 | --- | --- | --- | --- |
 | tools/project.py | Checks the plan/task records and prints a small assignment for one agent | Brief byte limit, with care; do not weaken dependency checks | `python -m unittest discover -s tools -p "test_*.py"` |
 | tools/test_project.py | Tests the helper itself using temporary copies and intentionally bad records | Add new failure examples; do not delete inconvenient assertions | Same command |
+| tools/check_game.py | Checks the pinned Godot version, imports the project, then runs one real registered game suite and saves phase logs | Keep the version/error/count checks strict; suite names must also exist in the Godot runner | `python tools/check_game.py --suite smoke` |
+| tools/test_check_game.py | Tests wrapper failure and success handling with independent fake subprocess results | Add explicit failure fixtures; do not use production output to define expectations | `python -m unittest tools/test_check_game.py` |
 | fixtures/seed_vectors.json | Fixed examples of seed-based choices for future game tests | Do not regenerate to hide an implementation mismatch | T007 consumes these in Godot |
 | fixtures/coordinate_vectors.json | Fixed examples of positive/negative map positions | Add independent examples without changing existing expectations | T006 consumes these in Godot |
 | docs/toolchain.lock.json | Pinned toolchain candidate versions, download URLs, and SHA-256 hashes | Candidate versions require matching checksums; see [docs/features/setup.md](features/setup.md) | `python tools/project.py validate` |

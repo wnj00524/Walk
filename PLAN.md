@@ -37,8 +37,8 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T001 | Record a compatible prebuilt toolchain candidate | DONE |
 | T002 | Create a minimal Godot project shell | DONE |
 | T003 | Create a tiny test runner that fails correctly | DONE |
-| T004 | Add a reproducible game-check command | READY |
-| T005 | Implement comfortable basic first-person movement | WAITING |
+| T004 | Add a reproducible game-check command | DONE |
+| T005 | Implement comfortable basic first-person movement | READY |
 | T006 | Implement logical world positions | WAITING |
 | T007 | Implement deterministic discrete world choices | WAITING |
 | T008 | Load the terrain add-on and verify its actual API | WAITING |
