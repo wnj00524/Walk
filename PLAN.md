@@ -39,8 +39,8 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T003 | Create a tiny test runner that fails correctly | DONE |
 | T004 | Add a reproducible game-check command | DONE |
 | T005 | Implement comfortable basic first-person movement | DONE |
-| T006 | Implement logical world positions | READY |
-| T007 | Implement deterministic discrete world choices | WAITING |
+| T006 | Implement logical world positions | DONE |
+| T007 | Implement deterministic discrete world choices | READY |
 | T008 | Load the terrain add-on and verify its actual API | WAITING |
 | T009 | Build one script-defined smooth streamed terrain probe | WAITING |
 | T010 | Probe large-distance identity and coordinate handling | WAITING |

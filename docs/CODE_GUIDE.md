@@ -20,10 +20,13 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/run_tests.gd | Runs named offline Godot suites and reports honest counts and exit codes | Add focused registered suites; keep smoke and failure semantics stable | `godot --headless --path game --script res://tests/run_tests.gd -- --suite smoke` |
 | game/tests/test_smoke.gd | Checks that the current main scene exists for the passing smoke suite | Add independent foundation assertions | Selected by the smoke suite; headless only |
 | game/tests/test_harness_failure.gd | Supplies an opt-in known failure to prove failures reach the process exit code | Keep intentionally broken and out of normal suites | `godot --headless --path game --script res://tests/run_tests.gd -- --self-test failure` |
+| game/src/world/world_position.gd | Keeps signed 256-metre logical cells and finite local metre offsets separate from renderer coordinates | Cell width and contract validation only | `python tools/check_game.py --suite coordinates` |
+| game/tests/test_world_position.gd | Reads frozen coordinate examples and checks boundaries and invalid input | Add independent cases without deriving expectations from production code | `python tools/check_game.py --suite coordinates` |
 
 Feature walkthroughs:
 - [Toolchain and Environment Setup](features/setup.md)
 - [Minimal Godot Project Shell](features/project-shell.md)
 - [Comfortable First-Person Walking](features/walking.md)
+- [Logical World Positions](features/logical-positions.md)
 
-The minimal game shell and the labelled walking fixture are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
+The minimal game shell, labelled walking fixture, and logical position value are implemented. Terrain, asset clients, sound, saves, and the full world are not. As tasks add them, update this index without implying that planned files already work.
