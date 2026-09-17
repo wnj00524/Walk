@@ -18,7 +18,7 @@ import sys
 from typing import Any
 
 STATES = {'WAITING', 'READY', 'ACTIVE', 'REVIEW', 'BLOCKED', 'DONE'}
-TASK_ID = re.compile(r'T\d{3}\Z')
+TASK_ID = re.compile(r'T\d{3}[a-z]?\Z')
 SECTIONS = ('Outcome', 'Read set', 'Allowed changes', 'Steps', 'Acceptance',
             'Non-goals', 'Stop conditions')
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
@@ -137,7 +137,8 @@ def validate(root: Path) -> list[str]:
             cards[task_id] = load_task(root, task_id)
         except PlanError as exc:
             errors.append(str(exc))
-    actual = {p.stem for p in (root / 'tasks').glob('T[0-9][0-9][0-9].md')}
+    actual = ({p.stem for p in (root / 'tasks').glob('T[0-9][0-9][0-9].md')}
+              | {p.stem for p in (root / 'tasks').glob('T[0-9][0-9][0-9][a-z].md')})
     for orphan in sorted(actual - set(states)):
         errors.append(f'{orphan}: card has no PLAN.md row.')
     for task_id, card in cards.items():

@@ -55,14 +55,16 @@ class ProjectToolTests(unittest.TestCase):
         """The supplied pack starts structurally consistent, without claiming runtime success."""
         self.assertEqual(project.validate(self.root), [])
 
-    def test_plan_has_36_tasks_and_gate_blocks_dispatch(self) -> None:
-        """A rejected foundation gate leaves no task accidentally dispatchable."""
+    def test_plan_has_37_tasks_and_spike_is_ready(self) -> None:
+        """After the coordinator approved the GDScript terrain spike, exactly T012a is READY."""
         states = project.plan_states(self.root)
-        self.assertEqual(len(states), 36)
+        self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, [], f'Expected no READY task after T012 rejection, got: {ready}')
+        self.assertEqual(ready, ['T012a'],
+                         f'Expected only T012a READY after coordinator approval, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
+        self.assertEqual(states['T012a'], 'READY')
 
     def test_blocked_brief_is_inspection_only(self) -> None:
         """A blocked gate can be inspected without becoming a normal assignment."""

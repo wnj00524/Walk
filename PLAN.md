@@ -15,7 +15,7 @@ This delivery contains documentation, independent fixtures and tested documentat
 | Milestone | Main tasks | Evidence required before advancing |
 | --- | --- | --- |
 | M0 - reproducible foundation | T001-T004 | Exact prebuilt candidate, project import, tests that fail correctly, working check command |
-| M1 - viable walking/streaming backend | T005-T012 | Real smooth terrain, collision, actual coordinate strategy and Windows exported prototype; explicit backend acceptance |
+| M1 - viable walking/streaming backend | T005-T012, T012a | Real smooth terrain, collision, actual coordinate strategy and Windows exported prototype; explicit backend acceptance |
 | M2 - persistent and inspectable world | T013-T015 | Resume, deterministic/seam regressions and repeatable GPU captures |
 | M3 - asset pipeline without manual editing | T016-T019 | Offline tests, spend controls, representative real assets approved in engine |
 | M4 - first beautiful procedural slice | T020-T024 | Reproducible landforms/placement, bounded vegetation, coherent materials, owner visual acceptance |
@@ -46,6 +46,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T010 | Probe large-distance identity and coordinate handling | DONE |
 | T011 | Freeze the terrain adapter contract from probe evidence | DONE |
 | T012 | Accept or reject the terrain foundation | BLOCKED |
+| T012a | Prove a GDScript chunked-heightmap terrain spike | READY |
 | T013 | Save and resume the basic walker state | WAITING |
 | T014 | Add deterministic terrain and seam regression tests | WAITING |
 | T015 | Create repeatable GPU scene captures | WAITING |
