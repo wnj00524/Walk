@@ -26,6 +26,7 @@ This index describes only code actually included now. Intended game modules are 
 | game/tests/test_world_choices.gd | Compares deterministic choices with frozen seed vectors and checks order independence and rejection | Add independent vectors and invalid cases; do not generate expected values from production code | `python tools/check_game.py --suite deterministic` |
 | game/tests/probes/terrain_api_probe.gd | Constructs the pinned Voxel Tools native classes, records reflected API names, and performs small generator/viewer/collision/diagnostic calls | Keep calls guarded by observed class methods; do not turn this probe into a terrain world | `godot --headless --path game --script res://tests/probes/terrain_api_probe.gd` |
 | game/src/terrain/terrain_service.gd | Owns the native seeded smooth terrain, camera viewer, collision setting, readiness state, and backend diagnostics | Noise range, frequency, and view distance are metre settings; keep readiness tied to native work | Streamed ground probe |
+| game/src/terrain/chunk_terrain.gd | Owns the alternative logical-coordinate heightmap chunks, worker generation, visual nodes, nearby collision, readiness states, and epoch diagnostics | Chunk size, ring size, density, noise frequency, and height range are terrain recipe values; preserve logical-space sampling and epoch checks | `chunk_terrain` suite and direct chunk probe |
 | game/tests/probes/streamed_ground.gd | Waits for native ground, walks across checkpoints, and reports backend diagnostics | Checkpoints are probe distances; this script must not become production terrain logic | Streamed ground probe |
 | game/tests/probes/streamed_ground.tscn | Reproducible graphical scene containing terrain, viewer, lighting, and walker | Camera start and neutral lighting only | Graphical probe |
 | game/data/terrain_probe.json | Records the T009 seed, backend, budgets, and unavailable metrics | Keep aligned with the probe settings | Read by review |
@@ -52,5 +53,6 @@ Feature walkthroughs:
 - [Voxel Tools Terrain API](features/terrain-api.md)
 - [Script-Defined Streamed Ground Probe](features/streamed-ground-probe.md)
 - [Large-Distance Coordinate Probe](features/coordinates.md)
+- [ChunkTerrain alternative backend](features/terrain-api.md#chunkterrain-alternative-backend-t012a)
 
 The minimal game shell, labelled walking fixture, logical position value, deterministic application-level choice helper, pinned Voxel Tools API probe, T009 native terrain probe, and T010 coordinate feasibility probe are implemented. T010 found that logical coordinates remain exact at tested distances but the candidate native-origin handoff does not preserve terrain identity; backend acceptance remains downstream work. Asset clients, sound, saves, and the full world are not implemented.

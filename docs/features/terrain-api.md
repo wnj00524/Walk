@@ -1,5 +1,32 @@
 # Voxel Tools terrain API
 
+## ChunkTerrain alternative backend (T012a)
+
+`game/src/terrain/chunk_terrain.gd` is the selected alternative to the
+rejected Voxel Tools foundation. It owns a bounded ring of heightmap chunks,
+creates height samples on `WorkerThreadPool`, and applies meshes and
+`HeightMapShape3D` collision on the main thread. The default ring is 3 by 3
+chunks, each 256 metres wide, with 32 samples per side.
+
+The service never feeds renderer-space positions into the noise generator.
+Each sample uses the logical chunk coordinate and local metre offset. Chunk
+nodes are positioned relative to the current visual-origin chunk, so a
+recenter moves existing nodes without changing the logical sample. Every
+background result carries the configure epoch; results from an older epoch
+are discarded.
+
+The C03 methods are now implemented: `configure`, `update_viewer`,
+`get_ground_state`, `query_surface`, `get_diagnostics`, and `shutdown`.
+`READY` means the containing chunk has mesh and collision nodes. `PENDING`
+means its worker result is still arriving, and positions outside the active
+ring return `OUTSIDE_TESTED_SUPPORT`.
+
+The headless probe performs three recenterings and records zero height delta
+for the tested seed. The RTX 2060 graphical probe rendered continuous terrain,
+confirmed a collision ray hit, and measured a 120 FPS minimum after warm-up
+(144 FPS current), so the backend gate is now true. Foliage, water, sound,
+advanced LOD, and Windows export remain outside this spike.
+
 ## What the owner can notice
 
 There is not a visible terrain world yet. This task proves that the selected

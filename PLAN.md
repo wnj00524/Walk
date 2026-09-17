@@ -46,7 +46,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T010 | Probe large-distance identity and coordinate handling | DONE |
 | T011 | Freeze the terrain adapter contract from probe evidence | DONE |
 | T012 | Accept or reject the terrain foundation | BLOCKED |
-| T012a | Prove a GDScript chunked-heightmap terrain spike | READY |
+| T012a | Prove a GDScript chunked-heightmap terrain spike | REVIEW |
 | T013 | Save and resume the basic walker state | WAITING |
 | T014 | Add deterministic terrain and seam regression tests | WAITING |
 | T015 | Create repeatable GPU scene captures | WAITING |

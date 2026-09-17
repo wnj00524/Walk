@@ -80,6 +80,6 @@
     "binary_start": true,
     "extension_load": true,
     "windows_export_launch": false,
-    "backend_gate": false
+    "backend_gate": true
   }
 }
