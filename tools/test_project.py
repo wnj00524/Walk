@@ -56,12 +56,12 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After review, T012a is DONE and no unassigned task is READY."""
+        """After review, T012a is DONE and the next recipe task is READY."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, [],
-                         f'Expected no unassigned READY tasks after implementation, got: {ready}')
+        self.assertEqual(ready, ['T020'],
+                         f'Expected only T020 READY after implementation, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
@@ -77,12 +77,12 @@ class ProjectToolTests(unittest.TestCase):
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T020')
+            project.make_brief(self.root, 'T023')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T020', inspect=True))
+                      project.make_brief(self.root, 'T023', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -119,7 +119,7 @@ class ProjectToolTests(unittest.TestCase):
         """Readiness requires accepted prerequisites, not just their existence."""
         self.edit('PLAN.md', '| T021 | Generate deterministic plant and rock placement data | WAITING |',
                   '| T021 | Generate deterministic plant and rock placement data | READY |')
-        self.assertTrue(any('T021: dependency T019 is not DONE' in e
+        self.assertTrue(any('T021: dependency T020 is not DONE' in e
                             for e in project.validate(self.root)))
 
     def test_done_requires_evidence_summary(self) -> None:
@@ -200,7 +200,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T020'])
+            code = project.main(['--root', str(self.root), 'brief', 'T023'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 
