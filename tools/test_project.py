@@ -56,7 +56,7 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(project.validate(self.root), [])
 
     def test_plan_has_37_tasks_and_spike_is_done(self) -> None:
-        """After T023 implementation, no later task is ready before review."""
+        """After T023 review, no later task is ready before owner acceptance."""
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 37)
         ready = [t for t, s in states.items() if s == 'READY']
@@ -64,7 +64,7 @@ class ProjectToolTests(unittest.TestCase):
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
-        self.assertEqual(states['T023'], 'REVIEW')
+        self.assertEqual(states['T023'], 'DONE')
 
     def test_blocked_brief_is_inspection_only(self) -> None:
         """A blocked gate can be inspected without becoming a normal assignment."""
@@ -117,6 +117,8 @@ class ProjectToolTests(unittest.TestCase):
 
     def test_premature_ready_task_is_rejected(self) -> None:
         """Readiness requires accepted prerequisites, not just their existence."""
+        self.edit('PLAN.md', '| T023 | Set consistent terrain materials and daylight | DONE |',
+                  '| T023 | Set consistent terrain materials and daylight | REVIEW |')
         self.edit('PLAN.md', '| T024 | Accept the first procedural visual-quality slice | WAITING |',
                   '| T024 | Accept the first procedural visual-quality slice | READY |')
         self.assertTrue(any('T024: dependency T023 is not DONE' in e
