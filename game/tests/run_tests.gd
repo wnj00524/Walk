@@ -1,0 +1,80 @@
+## Purpose: Runs the small offline Godot checks used while the walking experience is built.
+## Why: A named suite makes a passing check, a broken check, and an empty selection
+##      distinguishable before a larger test framework is justified.
+## Reads: Godot's user arguments after `--`, plus the registered test callables.
+## Writes: Human-readable counts to standard output and a nonzero process exit on failure.
+## Safe changes: Add focused suites and assertions; keep exit-code meanings stable.
+## Failure: Unknown or empty suites, failed assertions, and unexpected errors fail the run.
+extends SceneTree
+
+const TEST_MAIN_SCENE := "res://scenes/main.tscn"
+const SmokeChecks = preload("res://tests/test_smoke.gd")
+const FailureChecks = preload("res://tests/test_harness_failure.gd")
+
+var _executed := 0
+var _passed := 0
+var _failed := 0
+var _failures: Array[String] = []
+
+func _init() -> void:
+	call_deferred("_run")
+
+func _run() -> void:
+	var options := _parse_arguments(OS.get_cmdline_user_args())
+	if options.get("self_test", "") == "failure":
+		_run_suite("failure", [Callable(FailureChecks, "always_fails")])
+	else:
+		var suite_name: String = options.get("suite", "")
+		var suites: Dictionary = {"smoke": [Callable(SmokeChecks, "main_scene_exists").bind(TEST_MAIN_SCENE)]}
+		if not suites.has(suite_name):
+			_record_failure("Unknown suite: '%s'. Available suites: smoke." % suite_name)
+		else:
+			_run_suite(suite_name, suites[suite_name])
+	_finish()
+
+func _parse_arguments(arguments: PackedStringArray) -> Dictionary:
+	var options := {"suite": "", "self_test": ""}
+	var index := 0
+	while index < arguments.size():
+		if arguments[index] == "--suite" and index + 1 < arguments.size():
+			options["suite"] = arguments[index + 1]
+			index += 2
+		elif arguments[index] == "--self-test" and index + 1 < arguments.size():
+			options["self_test"] = arguments[index + 1]
+			index += 2
+		else:
+			index += 1
+	return options
+
+func _run_suite(suite_name: String, tests: Array) -> void:
+	if tests.is_empty():
+		_record_failure("Suite '%s' selected no tests." % suite_name)
+		return
+	for test: Callable in tests:
+		_executed += 1
+		if not test.is_valid():
+			_failed += 1
+			_failures.append("Invalid test callable.")
+			continue
+		var result: Variant = test.call()
+		if result == null:
+			_failed += 1
+			_failures.append("Test returned no result.")
+		elif not (result is String):
+			_failed += 1
+			_failures.append("Test returned an unsupported result.")
+		elif not (result as String).is_empty():
+			_failed += 1
+			_failures.append("%s: %s" % [test.get_method(), result])
+		else:
+			_passed += 1
+
+func _record_failure(message: String) -> void:
+	_failed += 1
+	_failures.append(message)
+
+func _finish() -> void:
+	print("Tests: executed=%d passed=%d failed=%d" % [_executed, _passed, _failed])
+	for failure: String in _failures:
+		push_error(failure)
+	quit(0 if _failed == 0 and _executed > 0 else 1)
