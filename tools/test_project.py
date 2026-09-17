@@ -77,12 +77,12 @@ class ProjectToolTests(unittest.TestCase):
     def test_waiting_brief_is_refused(self) -> None:
         """A waiting task cannot be handed out as a normal implementation assignment."""
         with self.assertRaisesRegex(project.PlanError, 'not READY/ACTIVE'):
-            project.make_brief(self.root, 'T018')
+            project.make_brief(self.root, 'T019')
 
     def test_waiting_task_can_be_inspected(self) -> None:
         """Coordinators can read later work only with an explicit non-implementation label."""
         self.assertIn('INSPECTION ONLY - DO NOT IMPLEMENT',
-                      project.make_brief(self.root, 'T018', inspect=True))
+                      project.make_brief(self.root, 'T019', inspect=True))
 
     def test_missing_ready_context_is_reported(self) -> None:
         """A task cannot be ready while its required instructions are missing."""
@@ -200,7 +200,7 @@ class ProjectToolTests(unittest.TestCase):
         """An invalid assignment produces a real failing command exit status."""
         output = io.StringIO()
         with redirect_stderr(output):
-            code = project.main(['--root', str(self.root), 'brief', 'T018'])
+            code = project.main(['--root', str(self.root), 'brief', 'T019'])
         self.assertNotEqual(code, 0)
         self.assertIn('not READY/ACTIVE', output.getvalue())
 
