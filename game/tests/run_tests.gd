@@ -18,6 +18,7 @@ const WorldSaveChecks = preload("res://tests/test_world_save.gd")
 const TerrainConsistencyChecks = preload("res://tests/test_terrain_consistency.gd")
 const LandformRecipeChecks = preload("res://tests/test_landform_recipe.gd")
 const PlacementRulesChecks = preload("res://tests/test_placement_rules.gd")
+const VegetationBatchesChecks = preload("res://tests/test_vegetation_batches.gd")
 
 var _executed := 0
 var _passed := 0
@@ -80,10 +81,16 @@ func _run() -> void:
 				Callable(PlacementRulesChecks, "neighboring_cells_have_disjoint_owners"),
 				Callable(PlacementRulesChecks, "rejects_missing_assets"),
 				Callable(PlacementRulesChecks, "defers_unready_terrain")
+			],
+			"vegetation": [
+				Callable(VegetationBatchesChecks, "creates_and_reuses_batches"),
+				Callable(VegetationBatchesChecks, "releases_distant_batches_within_bound"),
+				Callable(VegetationBatchesChecks, "rejects_stale_batches"),
+				Callable(VegetationBatchesChecks, "rejects_invalid_records_without_fallback")
 			]
 		}
 		if not suites.has(suite_name):
-			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain, save, terrain, landform, placement." % suite_name)
+			_record_failure("Unknown suite: '%s'. Available suites: smoke, player, coordinates, deterministic, chunk_terrain, save, terrain, landform, placement, vegetation." % suite_name)
 		else:
 			_run_suite(suite_name, suites[suite_name])
 	_finish()

@@ -8,9 +8,11 @@ extends Node3D
 
 const WorldSaveType = preload("res://src/persistence/world_save.gd")
 const LandformRecipeType = preload("res://src/world/landform_recipe.gd")
+const VegetationBatchesType = preload("res://src/presentation/vegetation_batches.gd")
 const SAVE_PATH := "user://world_save.json"
 
 var _terrain: ChunkTerrain
+var _vegetation: VegetationBatches
 var _walker: Walker
 var _position: WorldPosition
 var _identity := {}
@@ -58,6 +60,14 @@ func _ready() -> void:
 		set_physics_process(false)
 		return
 	_terrain.update_viewer(_position)
+	_vegetation = VegetationBatchesType.new()
+	add_child(_vegetation)
+	var vegetation_configured := _vegetation.configure_from_files(_identity, _terrain)
+	if vegetation_configured.get("status") != "READY":
+		_show_status("Vegetation could not start: %s" % vegetation_configured.get("error", "unknown error"))
+		set_physics_process(false)
+		return
+	_vegetation.update_viewer(_position)
 	set_physics_process(true)
 
 func _physics_process(_delta: float) -> void:
@@ -95,6 +105,7 @@ func _physics_process(_delta: float) -> void:
 	_last_walker_position = _walker.position
 	_view = {"yaw_rad": _walker.rotation.y, "pitch_rad": _walker.camera.rotation.x}
 	_terrain.update_viewer(_position)
+	_vegetation.update_viewer(_position)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
