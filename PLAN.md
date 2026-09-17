@@ -47,7 +47,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T011 | Freeze the terrain adapter contract from probe evidence | DONE |
 | T012 | Accept or reject the terrain foundation | BLOCKED |
 | T012a | Prove a GDScript chunked-heightmap terrain spike | DONE |
-| T013 | Save and resume the basic walker state | REVIEW |
+| T013 | Save and resume the basic walker state | DONE |
 | T014 | Add deterministic terrain and seam regression tests | WAITING |
 | T015 | Create repeatable GPU scene captures | WAITING |
 | T016 | Define and validate the asset request registry | WAITING |
