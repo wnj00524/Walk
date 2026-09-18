@@ -214,7 +214,7 @@
 
 ### Pending
 
-- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
 - Purpose: run the T024b-focused vegetation regression after adding the cell-origin implementation and assertion.
 - Status: NOT RUN
 
