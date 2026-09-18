@@ -216,6 +216,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
 - Purpose: run the T024b-focused vegetation regression after adding the cell-origin implementation and assertion.
+- Status: FAILED
+- Result: exit code 1; suite log: `artifacts/check_game_20260918-103924_suite_vegetation.log`.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\check_game_20260918-103924_suite_vegetation.log"`
+- Purpose: inspect the exact T024b vegetation assertion failure before repairing it.
 - Status: NOT RUN
 
 ### Pending
