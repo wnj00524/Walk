@@ -139,7 +139,8 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tasks\\T024a.md"`
 - Purpose: confirm the T024a write scope before adding a closer fixed-seed visual route.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; T024a explicitly forbids renderer and route changes. The batch-world-origin correction is therefore outside this task and was reverted.
 
 ### Pending
 
