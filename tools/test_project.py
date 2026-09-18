@@ -55,12 +55,12 @@ class ProjectToolTests(unittest.TestCase):
         """The supplied pack starts structurally consistent, without claiming runtime success."""
         self.assertEqual(project.validate(self.root), [])
 
-    def test_plan_has_39_tasks_and_spike_is_done(self) -> None:
+    def test_plan_has_40_tasks_and_spike_is_done(self) -> None:
         """A bounded T024 revision is the only task ready while the gate is blocked."""
         states = project.plan_states(self.root)
-        self.assertEqual(len(states), 39)
+        self.assertEqual(len(states), 40)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T024b'], f'Expected only T024b READY, got: {ready}')
+        self.assertEqual(ready, ['T024c'], f'Expected only T024c READY, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')

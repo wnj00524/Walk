@@ -242,6 +242,12 @@
 
 ### Pending
 
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the T024c task split, dependencies, and updated plan structure.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
 - Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
 - Status: NOT RUN
