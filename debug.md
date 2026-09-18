@@ -395,7 +395,8 @@
 
 - Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/visual_capture.tscn -- --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024e_seed_1337" --world-seed 1337`
 - Purpose: generate supplementary seed-1337 real-renderer PNG evidence using the temporary capture-fixture seed override.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; captured four seed-1337 PNGs with Godot 4.6.2/OpenGL and RTX 2060.
 
 ### Pending
 
