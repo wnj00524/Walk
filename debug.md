@@ -279,6 +279,13 @@
 
 - Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
 - Purpose: sample imported albedo pixels to determine whether the white render comes from empty/white texture data or scene lighting.
+- Status: COMPLETED
+- Result: exit code 0; all three albedos contain non-white pixel data (tree `(0.3059, 0.4431, 0.1843)`, rock `(0.2941, 0.2784, 0.1412)`, groundcover `(0.3333, 0.3922, 0.302)`). The material/texture defect hypothesis is disproven.
+
+### Pending
+
+- Command: `Get-ChildItem -LiteralPath "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts" -Directory | Where-Object { $_.Name -like "T019_*" } | Select-Object -ExpandProperty FullName`
+- Purpose: locate the current isolated asset captures and confirm whether the earlier white screenshots were stale artifacts.
 - Status: NOT RUN
 
 ### Pending
