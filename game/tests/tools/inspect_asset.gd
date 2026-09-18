@@ -32,6 +32,7 @@ func _ready() -> void:
 	var material_count := 0
 	var textured_material_count := 0
 	var albedo_paths: Array[String] = []
+	var albedo_samples: Array[String] = []
 	var bounds := AABB()
 	for node in instance.find_children("*", "MeshInstance3D", true, false):
 		var mesh_node := node as MeshInstance3D
@@ -44,13 +45,16 @@ func _ready() -> void:
 				material_count += 1
 			if material is BaseMaterial3D and (material as BaseMaterial3D).albedo_texture != null:
 				textured_material_count += 1
-				albedo_paths.append((material as BaseMaterial3D).albedo_texture.resource_path)
+				var albedo := (material as BaseMaterial3D).albedo_texture
+				albedo_paths.append(albedo.resource_path)
+				var albedo_image := albedo.get_image()
+				albedo_samples.append(str(albedo_image.get_pixel(0, 0)) if albedo_image != null and not albedo_image.is_empty() else "<empty>")
 		bounds = bounds.merge(mesh_node.get_aabb())
 	if mesh_count == 0:
 		push_error("imported scene contains no mesh instances")
 		get_tree().quit(1)
 		return
-	print(JSON.stringify({"mesh_instances": mesh_count, "material_count": material_count, "textured_material_count": textured_material_count, "albedo_paths": albedo_paths, "bounds_min": bounds.position, "bounds_size": bounds.size, "blender_dependency": false}))
+	print(JSON.stringify({"mesh_instances": mesh_count, "material_count": material_count, "textured_material_count": textured_material_count, "albedo_paths": albedo_paths, "albedo_samples": albedo_samples, "bounds_min": bounds.position, "bounds_size": bounds.size, "blender_dependency": false}))
 	var output_dir := _argument_value("--output-dir", "artifacts/T019_" + arguments[0].get_file().get_basename())
 	if not output_dir.is_empty():
 		output_dir = ProjectSettings.globalize_path(output_dir)

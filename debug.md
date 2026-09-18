@@ -272,6 +272,13 @@
 
 - Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
 - Purpose: report the exact imported albedo resource paths for the approved assets.
+- Status: COMPLETED
+- Result: exit code 0; each asset points to its expected local `_0.jpg` albedo path. The remaining question is whether the imported texture contains usable pixel data at runtime.
+
+### Pending
+
+- Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
+- Purpose: sample imported albedo pixels to determine whether the white render comes from empty/white texture data or scene lighting.
 - Status: NOT RUN
 
 ### Pending
