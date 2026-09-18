@@ -55,4 +55,5 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" --timeout 180`
 - Purpose: capture the fixed-seed visual evidence after the vegetation grouping revision.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; validated 4 captures and `capture_report.json`. Log: `artifacts/T024a_visual_capture/godot_capture.log`.
