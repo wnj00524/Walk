@@ -104,7 +104,8 @@
 
 - Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
 - Purpose: inspect all approved GLB meshes through Godot's real importer and capture their reported geometry/material readiness.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; all three assets import as one MeshInstance3D with finite bounds (tree 1.06×2.00×1.05 m, rock 1.87×0.86×2.00 m, groundcover 2.00×0.99×1.89 m), no Blender dependency.
 
 ### Pending
 
