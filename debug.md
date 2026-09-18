@@ -388,6 +388,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite terrain`
 - Purpose: run the affected terrain regression required by the T024e acceptance checklist.
+- Status: COMPLETED
+- Result: exit code 0; terrain suite executed 4, passed 4, failed 0. Logs: `artifacts/check_game_20260918-122910_import.log`, `artifacts/check_game_20260918-122910_suite_terrain.log`.
+
+### Pending
+
+- Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/visual_capture.tscn -- --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024e_seed_1337" --world-seed 1337`
+- Purpose: generate supplementary seed-1337 real-renderer PNG evidence using the temporary capture-fixture seed override.
 - Status: NOT RUN
 
 ### Pending
