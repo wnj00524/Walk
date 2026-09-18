@@ -179,6 +179,12 @@
 
 ### Pending
 
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\PLAN.md" | Select-Object -Last 45`
+- Purpose: revalidate the current worktree and task-status authority before continuing the T024a resolution.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
 - Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
 - Status: NOT RUN
