@@ -251,6 +251,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: rerun validation after adding the required T024c Non-goals section.
+- Status: FAILED
+- Result: exit code 1; `T024c: required ready-task context is missing: game/assets/initial.`
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: rerun validation after replacing the directory context with concrete approved asset files.
 - Status: NOT RUN
 
 ### Pending
