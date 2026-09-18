@@ -406,6 +406,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the final REVIEW task statuses and T024e evidence record.
+- Status: COMPLETED
+- Result: exit code 0; 42 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff HEAD~1 --stat; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short`
+- Purpose: perform the independent review pass over the latest T024e evidence/status commit and confirm no tracked source is unexpectedly dirty.
 - Status: NOT RUN
 
 ### Pending
