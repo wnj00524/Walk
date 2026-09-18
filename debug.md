@@ -223,6 +223,20 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\check_game_20260918-103924_suite_vegetation.log"`
 - Purpose: inspect the exact T024b vegetation assertion failure before repairing it.
+- Status: COMPLETED
+- Result: exit code 0; failure was caused by checking a batch after freeing its parent holder, not by the renderer fix.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
+- Purpose: rerun the T024b vegetation suite after moving the world-origin assertion before teardown.
+- Status: COMPLETED
+- Result: exit code 0; suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-104102_import.log`, `artifacts/check_game_20260918-104102_suite_vegetation.log`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" --timeout 180`
+- Purpose: capture fixed-seed PNG evidence after correcting vegetation batch world placement.
 - Status: NOT RUN
 
 ### Pending
