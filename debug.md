@@ -181,6 +181,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\PLAN.md" | Select-Object -Last 45`
 - Purpose: revalidate the current worktree and task-status authority before continuing the T024a resolution.
+- Status: COMPLETED
+- Result: exit code 0; T024a is BLOCKED, generated Godot byproducts are the only untracked files, and M4 remains incomplete.
+
+### Pending
+
+- Command: `rg -n "38|T024a|EXPECTED|task records" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\test_project.py" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py"`
+- Purpose: locate task-count and status expectations that must be updated for the new T024b split.
 - Status: NOT RUN
 
 ### Pending
