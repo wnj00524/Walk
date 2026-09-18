@@ -286,6 +286,13 @@
 
 - Command: `Get-ChildItem -LiteralPath "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts" -Directory | Where-Object { $_.Name -like "T019_*" } | Select-Object -ExpandProperty FullName`
 - Purpose: locate the current isolated asset captures and confirm whether the earlier white screenshots were stale artifacts.
+- Status: COMPLETED
+- Result: exit code 0; only the original `T019_fern`, `T019_rock`, and `T019_tree` directories exist, confirming the previous white screenshots were stale pre-texture captures.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the T024d route task split and updated plan/task count.
 - Status: NOT RUN
 
 ### Pending
