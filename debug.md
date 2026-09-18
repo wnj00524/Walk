@@ -167,7 +167,8 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff --check`
 - Purpose: verify whitespace integrity across the T024a implementation and evidence changes before committing them.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; no whitespace errors reported.
 
 ### Pending
 
