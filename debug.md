@@ -314,6 +314,13 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\habitats.json"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\test_placement_rules.gd"`
 - Purpose: inspect the current habitat limits and focused assertions before tuning T024e suitability and scale.
+- Status: COMPLETED
+- Result: exit code 0; current budgets total 64, but forest/meadow slope limits and asset scales were conservative enough to leave the fixed route visibly sparse.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite placement`
+- Purpose: verify the T024e slope-suitability and scale tuning against deterministic placement assertions.
 - Status: NOT RUN
 
 ### Pending

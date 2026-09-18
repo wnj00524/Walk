@@ -7,9 +7,9 @@
       "density_per_cell": 32,
       "cluster_count": 8,
       "min_slope": 0.0,
-      "max_slope": 0.55,
-      "scale_min": 0.8,
-      "scale_max": 1.15,
+      "max_slope": 0.9,
+      "scale_min": 1.0,
+      "scale_max": 1.4,
       "asset_ids": ["tree_temperate_01"]
     },
     {
@@ -18,9 +18,9 @@
       "density_per_cell": 20,
       "cluster_count": 5,
       "min_slope": 0.0,
-      "max_slope": 0.3,
-      "scale_min": 0.7,
-      "scale_max": 1.0,
+      "max_slope": 0.65,
+      "scale_min": 0.9,
+      "scale_max": 1.25,
       "asset_ids": ["groundcover_fern_01"]
     },
     {
@@ -28,10 +28,10 @@
       "channel": "placement_rocky",
       "density_per_cell": 12,
       "cluster_count": 4,
-      "min_slope": 0.12,
+      "min_slope": 0.05,
       "max_slope": 1.2,
-      "scale_min": 0.65,
-      "scale_max": 1.25,
+      "scale_min": 0.8,
+      "scale_max": 1.35,
       "asset_ids": ["rock_temperate_01"]
     }
   ]
