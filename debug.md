@@ -332,7 +332,8 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the final T024a/T024b/T024c/T024d status records and evidence metadata.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; 41 task records and plan structure checked. Game/runtime not tested by this command.
 
 ### Pending
 
