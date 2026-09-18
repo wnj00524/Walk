@@ -298,6 +298,12 @@
 
 ### Pending
 
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\PLAN.md" | Select-Object -Last 25`
+- Purpose: revalidate the resumed worktree and current task authority before creating the approved visual-grouping follow-up.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
 - Purpose: capture the revised near-ground fixed-seed route for T024d visual inspection.
 - Status: COMPLETED
