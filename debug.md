@@ -146,6 +146,13 @@
 
 - Command: `rg -n -C 4 "T024a|T024" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\PLAN.md" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\DLOG.md"`
 - Purpose: locate the current T024a status row and the latest chronological log position before recording the blocker.
+- Status: COMPLETED
+- Result: exit code 0; T024a remains READY and T024 remains BLOCKED. Latest DLOG entry is the coordinator split to T024a.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\docs\\CODE_GUIDE.md"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\docs\\features\\placement-rules.md"`
+- Purpose: inspect the documentation locations that must explain the T024a density/grouping revision.
 - Status: NOT RUN
 
 ### Pending
