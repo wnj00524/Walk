@@ -26,8 +26,10 @@ Run the focused proof with:
 python tools/check_game.py --suite placement
 ```
 
-T024a uses bounded grouping budgets: forest is 24 objects across 5 clusters
-per cell, meadow is 16 across 4 clusters, and rocky is 10 across 3 clusters.
+The approved T024e grouping budgets are: forest 32 objects across 3 clusters,
+meadow 20 across 2 clusters, and rocky 12 across 2 clusters per cell. Forest
+allows slopes through 0.9 with scale 1.0–1.4, meadow allows slopes through
+0.65 with scale 0.9–1.25, and rocky uses slopes 0.05–1.2 with scale 0.8–1.35.
 These values preserve deterministic ownership, terrain gating, approved-asset
 checks, and the nine-batch renderer bound while making habitat groups more
 readable in fixed-seed captures.

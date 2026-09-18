@@ -427,6 +427,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff --check`
 - Purpose: run the final whitespace check during independent review before promoting T024e/T024a.
+- Status: COMPLETED
+- Result: exit code 0; no whitespace errors reported.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the final DONE status records for T024a/T024e after the independent review promotion.
 - Status: NOT RUN
 
 ### Pending
