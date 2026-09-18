@@ -64,3 +64,9 @@
 - Purpose: enumerate the generated PNG evidence files before visual inspection.
 - Status: COMPLETED
 - Result: exit code 0; four PNGs plus `capture_report.json` and `godot_capture.log` were generated.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture\\capture_report.json"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture\\godot_capture.log"`
+- Purpose: inspect rendered-instance counts and Godot asset-loading diagnostics for the sparse PNG result.
+- Status: NOT RUN
