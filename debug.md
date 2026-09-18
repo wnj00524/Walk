@@ -118,7 +118,8 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
 - Purpose: verify vegetation lifecycle and approved-asset rendering after assigning each batch its cell-world origin.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-102104_import.log`, `artifacts/check_game_20260918-102104_suite_vegetation.log`.
 
 ### Pending
 
