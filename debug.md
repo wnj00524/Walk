@@ -324,6 +324,16 @@
 - Status: COMPLETED
 - Result: exit code 0; validated four captures and refreshed the route report.
 
+### Review
+
+- Result: visual inspection completed; recognizable individual trees are visible, but coherent habitat grouping is still not demonstrated. T024d is recorded BLOCKED.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the final T024a/T024b/T024c/T024d status records and evidence metadata.
+- Status: NOT RUN
+
 ### Pending
 
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`

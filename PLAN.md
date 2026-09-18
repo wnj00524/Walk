@@ -62,7 +62,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T024a | Improve vegetation grouping for the visual gate | BLOCKED |
 | T024b | Place vegetation batches in their owning world cells | BLOCKED |
 | T024c | Repair approved asset material bindings | READY |
-| T024d | Add near-ground visual-gate viewpoints | READY |
+| T024d | Add near-ground visual-gate viewpoints | BLOCKED |
 | T025 | Implement a guarded ElevenLabs sound client | WAITING |
 | T026 | Produce and approve a small ambience library | WAITING |
 | T027 | Add layered local environmental sound | WAITING |
