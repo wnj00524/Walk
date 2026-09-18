@@ -321,6 +321,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite placement`
 - Purpose: verify the T024e slope-suitability and scale tuning against deterministic placement assertions.
+- Status: COMPLETED
+- Result: exit code 0; placement suite executed 7, passed 7, failed 0. Logs: `artifacts/check_game_20260918-121512_import.log`, `artifacts/check_game_20260918-121512_suite_placement.log`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024e_visual_capture" --timeout 180`
+- Purpose: capture fixed-seed PNG evidence after T024e suitability and scale tuning.
 - Status: NOT RUN
 
 ### Pending
