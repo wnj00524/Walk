@@ -83,6 +83,13 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src\\presentation\\vegetation_batches.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\asset_catalogue.json"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\visual_capture.gd"`
 - Purpose: read the complete asset load, catalogue, and capture implementation to identify the material presentation defect.
+- Status: COMPLETED
+- Result: exit code 0; assets are loaded via `load(res://assets/initial/*.glb)` and instantiated as Node3D scenes. Capture uses the same path and has no fallback material.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\tools\\inspect_asset.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\test_vegetation_batches.gd"`
+- Purpose: inspect the existing asset geometry/material diagnostics and vegetation assertions before changing runtime presentation.
 - Status: NOT RUN
 
 ### Pending
