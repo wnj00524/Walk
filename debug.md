@@ -381,6 +381,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the final T024e task/evidence records after the tuning checks.
+- Status: COMPLETED
+- Result: exit code 0; 42 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite terrain`
+- Purpose: run the affected terrain regression required by the T024e acceptance checklist.
 - Status: NOT RUN
 
 ### Pending
