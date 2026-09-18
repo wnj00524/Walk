@@ -13,4 +13,5 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all`
 - Purpose: inspect the repository and identify changes left by the interrupted regression batch.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; T024a source/task files are modified and Godot import/JPG/UID byproducts are untracked.
