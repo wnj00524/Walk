@@ -132,6 +132,13 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src\\world\\placement_rules.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\visual_route.json"`
 - Purpose: verify how density/cluster settings become world positions and whether the fixed capture route actually crosses populated cells.
+- Status: COMPLETED
+- Result: exit code 0; records are correctly clustered within 256 m cells, while the route's overview/ground views are 232–360 m from the target and the close view is 55 m high. The route is too distant/high to prove asset appearance.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tasks\\T024a.md"`
+- Purpose: confirm the T024a write scope before adding a closer fixed-seed visual route.
 - Status: NOT RUN
 
 ### Pending
