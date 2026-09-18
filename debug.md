@@ -27,4 +27,11 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
 - Purpose: run the focused visual-preset regression check using an explicit repository script path.
+- Status: FAILED
+- Result: exit code 1; prerequisite lookup reported `Godot prerequisite missing; set GODOT_BIN or install godot on PATH`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
+- Purpose: run the focused visual-preset regression check with the known Godot executable path.
 - Status: NOT RUN
