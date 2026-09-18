@@ -50,3 +50,9 @@
 - Purpose: rerun the focused visual-preset regression check with filesystem/process access elevated for Godot.
 - Status: COMPLETED
 - Result: exit code 0; suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-095921_import.log`, `artifacts/check_game_20260918-095921_suite_visual_preset.log`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" --timeout 180`
+- Purpose: capture the fixed-seed visual evidence after the vegetation grouping revision.
+- Status: NOT RUN
