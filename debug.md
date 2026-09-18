@@ -90,6 +90,13 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\tools\\inspect_asset.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\test_vegetation_batches.gd"`
 - Purpose: inspect the existing asset geometry/material diagnostics and vegetation assertions before changing runtime presentation.
+- Status: COMPLETED
+- Result: exit code 0; fixture reports mesh counts/bounds but does not yet assert material textures; runtime test only asserts at least one instance.
+
+### Pending
+
+- Command: `rg --files "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\tools" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests" | rg "inspect_asset|tscn$"`
+- Purpose: locate the asset-inspection scene before running geometry/material diagnostics.
 - Status: NOT RUN
 
 ### Pending
