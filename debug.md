@@ -160,7 +160,8 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the updated PLAN/DLOG/task records and documentation evidence metadata.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; 38 task records and plan structure checked. Game/runtime not tested by this command.
 
 ### Pending
 
