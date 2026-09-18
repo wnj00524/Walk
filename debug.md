@@ -57,3 +57,9 @@
 - Purpose: capture the fixed-seed visual evidence after the vegetation grouping revision.
 - Status: COMPLETED
 - Result: exit code 0; validated 4 captures and `capture_report.json`. Log: `artifacts/T024a_visual_capture/godot_capture.log`.
+
+### Pending
+
+- Command: `Get-ChildItem -LiteralPath "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" -File | Select-Object -ExpandProperty FullName`
+- Purpose: enumerate the generated PNG evidence files before visual inspection.
+- Status: NOT RUN
