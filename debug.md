@@ -209,6 +209,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: rerun plan validation after completing the required T024b task sections.
+- Status: COMPLETED
+- Result: exit code 0; 39 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
+- Purpose: run the T024b-focused vegetation regression after adding the cell-origin implementation and assertion.
 - Status: NOT RUN
 
 ### Pending

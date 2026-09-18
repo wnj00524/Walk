@@ -100,6 +100,7 @@ func apply_batch(cell: Vector2i, records: Array, batch_epoch: int) -> Dictionary
 		_batches.erase(cell)
 	var batch := Node3D.new()
 	batch.name = "VegetationBatch_%d_%d" % [cell.x, cell.y]
+	batch.position = Vector3(float(cell.x * CELL_WIDTH_M), 0.0, float(cell.y * CELL_WIDTH_M))
 	var rendered := 0
 	for record: Dictionary in records:
 		var error := _validate_record(record, cell)

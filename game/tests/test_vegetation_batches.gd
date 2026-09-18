@@ -18,14 +18,18 @@ static func creates_and_reuses_batches() -> String:
 	if configured.status != "READY":
 		holder.free()
 		return "configure failed: %s" % configured
-	var cell := Vector2i(0, 0)
+	var cell := Vector2i(2, -3)
 	var records: Array = [_record(cell, 12.0, 18.0)]
 	var first := renderer.apply_batch(cell, records, int(configured.epoch))
 	var second := renderer.apply_batch(cell, records, int(configured.epoch))
 	var diagnostics := renderer.get_diagnostics()
+	var batch := renderer.get_child(0) as Node3D
+	var expected_origin := Vector3(512.0, 0.0, -768.0)
 	holder.free()
 	if first.status != "READY" or second.status != "READY":
 		return "batch create/reuse failed: %s / %s" % [first, second]
+	if batch == null or batch.position != expected_origin:
+		return "batch world origin was %s, expected %s" % [batch.position if batch != null else "<missing>", expected_origin]
 	return "batch count was not one after reuse" if diagnostics.resident_batch_count != 1 else ""
 
 static func releases_distant_batches_within_bound() -> String:
