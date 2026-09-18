@@ -153,6 +153,13 @@
 
 - Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\docs\\CODE_GUIDE.md"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\docs\\features\\placement-rules.md"`
 - Purpose: inspect the documentation locations that must explain the T024a density/grouping revision.
+- Status: COMPLETED
+- Result: exit code 0; CODE_GUIDE includes the habitat budget entry and placement walkthrough is the correct feature doc.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the updated PLAN/DLOG/task records and documentation evidence metadata.
 - Status: NOT RUN
 
 ### Pending
