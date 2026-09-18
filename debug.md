@@ -374,6 +374,13 @@
 
 - Command: `python -m unittest discover -s "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools" -p "test_*.py"`
 - Purpose: run the complete offline helper regression required by T024e acceptance.
+- Status: COMPLETED
+- Result: exit code 0; 29 unittest cases passed (29 dots), no failures reported.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the final T024e task/evidence records after the tuning checks.
 - Status: NOT RUN
 
 ### Pending
