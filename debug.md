@@ -367,6 +367,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
 - Purpose: rerun the visual-preset regression after the final habitat tuning.
+- Status: COMPLETED
+- Result: exit code 0; visual_preset suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-122611_import.log`, `artifacts/check_game_20260918-122611_suite_visual_preset.log`.
+
+### Pending
+
+- Command: `python -m unittest discover -s "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools" -p "test_*.py"`
+- Purpose: run the complete offline helper regression required by T024e acceptance.
 - Status: NOT RUN
 
 ### Pending
