@@ -20,4 +20,11 @@
 
 - Command: `python tools/check_game.py --suite visual_preset`
 - Purpose: run the focused visual-preset regression check for T024a.
+- Status: FAILED
+- Result: exit code 2; Python resolved the script as `C:\\tools\\check_game.py`, which does not exist.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
+- Purpose: run the focused visual-preset regression check using an explicit repository script path.
 - Status: NOT RUN
