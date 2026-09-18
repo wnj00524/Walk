@@ -360,6 +360,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
 - Purpose: run the affected vegetation lifecycle and approved-asset regression after the final habitat tuning.
+- Status: COMPLETED
+- Result: exit code 0; vegetation suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-122513_import.log`, `artifacts/check_game_20260918-122513_suite_vegetation.log`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
+- Purpose: rerun the visual-preset regression after the final habitat tuning.
 - Status: NOT RUN
 
 ### Pending
