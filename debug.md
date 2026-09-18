@@ -125,7 +125,8 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" --timeout 180`
 - Purpose: regenerate fixed-seed PNG evidence after placing vegetation batches at their correct world-cell origins.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; validated 4 captures and refreshed `capture_report.json`/`godot_capture.log`.
 
 ### Pending
 
