@@ -6,4 +6,5 @@
 
 - Command: `git status --short --untracked-files=all`
 - Purpose: inspect changes and generated import byproducts left by the interrupted regression batch.
-- Status: NOT RUN
+- Status: FAILED
+- Result: `fatal: not a git repository (or any of the parent directories): .git`
