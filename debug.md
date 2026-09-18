@@ -265,6 +265,13 @@
 
 - Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
 - Purpose: report imported mesh material and albedo-texture bindings for every approved asset.
+- Status: COMPLETED
+- Result: exit code 0; all three assets report one mesh, one material, and one non-null albedo texture. This proves binding exists but not that the albedo points to the intended texture.
+
+### Pending
+
+- Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
+- Purpose: report the exact imported albedo resource paths for the approved assets.
 - Status: NOT RUN
 
 ### Pending
