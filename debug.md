@@ -335,7 +335,8 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" log -1 --oneline`
 - Purpose: determine whether the T024e capture-result ledger commit/push completed after the approval-review timeout.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; the timeout operation did not commit the ledger, and the only worktree entries are generated Godot byproducts. HEAD is `f889942`.
 
 ### Pending
 
