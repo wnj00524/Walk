@@ -413,6 +413,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff HEAD~1 --stat; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short`
 - Purpose: perform the independent review pass over the latest T024e evidence/status commit and confirm no tracked source is unexpectedly dirty.
+- Status: COMPLETED
+- Result: exit code 0; only generated Godot byproducts are untracked. The latest ledger commit itself changed only debug.md.
+
+### Pending
+
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" show --stat --oneline 5b7516a; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" show --format= 5b7516a -- game/data/habitats.json docs/evidence/T024e.md PLAN.md DLOG.md`
+- Purpose: inspect the actual T024e implementation/evidence/status commit during independent review.
 - Status: NOT RUN
 
 ### Pending
