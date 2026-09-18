@@ -258,6 +258,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: rerun validation after replacing the directory context with concrete approved asset files.
+- Status: COMPLETED
+- Result: exit code 0; 40 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
+- Purpose: report imported mesh material and albedo-texture bindings for every approved asset.
 - Status: NOT RUN
 
 ### Pending
