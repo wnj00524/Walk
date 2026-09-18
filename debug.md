@@ -293,6 +293,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the T024d route task split and updated plan/task count.
+- Status: COMPLETED
+- Result: exit code 0; 41 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
+- Purpose: capture the revised near-ground fixed-seed route for T024d visual inspection.
 - Status: NOT RUN
 
 ### Pending
