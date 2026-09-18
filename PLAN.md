@@ -59,11 +59,11 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T022 | Render bounded spatial vegetation batches | DONE |
 | T023 | Set consistent terrain materials and daylight | DONE |
 | T024 | Accept the first procedural visual-quality slice | BLOCKED |
-| T024a | Improve vegetation grouping for the visual gate | BLOCKED |
+| T024a | Improve vegetation grouping for the visual gate | REVIEW |
 | T024b | Place vegetation batches in their owning world cells | BLOCKED |
 | T024c | Repair approved asset material bindings | READY |
 | T024d | Add near-ground visual-gate viewpoints | BLOCKED |
-| T024e | Tune habitat suitability for readable grouping | READY |
+| T024e | Tune habitat suitability for readable grouping | REVIEW |
 | T025 | Implement a guarded ElevenLabs sound client | WAITING |
 | T026 | Produce and approve a small ambience library | WAITING |
 | T027 | Add layered local environmental sound | WAITING |

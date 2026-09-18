@@ -60,7 +60,7 @@ class ProjectToolTests(unittest.TestCase):
         states = project.plan_states(self.root)
         self.assertEqual(len(states), 42)
         ready = [t for t, s in states.items() if s == 'READY']
-        self.assertEqual(ready, ['T024c', 'T024e'], f'Expected only T024c/T024e READY, got: {ready}')
+        self.assertEqual(ready, ['T024c'], f'Expected only T024c READY, got: {ready}')
         self.assertEqual(states['T011'], 'DONE')
         self.assertEqual(states['T012'], 'BLOCKED')
         self.assertEqual(states['T012a'], 'DONE')
