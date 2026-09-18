@@ -62,4 +62,5 @@
 
 - Command: `Get-ChildItem -LiteralPath "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" -File | Select-Object -ExpandProperty FullName`
 - Purpose: enumerate the generated PNG evidence files before visual inspection.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; four PNGs plus `capture_report.json` and `godot_capture.log` were generated.
