@@ -25,11 +25,13 @@ static func creates_and_reuses_batches() -> String:
 	var diagnostics := renderer.get_diagnostics()
 	var batch := renderer.get_child(0) as Node3D
 	var expected_origin := Vector3(512.0, 0.0, -768.0)
-	holder.free()
 	if first.status != "READY" or second.status != "READY":
+		holder.free()
 		return "batch create/reuse failed: %s / %s" % [first, second]
 	if batch == null or batch.position != expected_origin:
+		holder.free()
 		return "batch world origin was %s, expected %s" % [batch.position if batch != null else "<missing>", expected_origin]
+	holder.free()
 	return "batch count was not one after reuse" if diagnostics.resident_batch_count != 1 else ""
 
 static func releases_distant_batches_within_bound() -> String:
