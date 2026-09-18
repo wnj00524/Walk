@@ -321,7 +321,8 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
 - Purpose: recapture the near-ground fixed-seed route after the final bounded grouping adjustment.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; validated four captures and refreshed the route report.
 
 ### Pending
 
