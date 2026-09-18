@@ -300,6 +300,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\PLAN.md" | Select-Object -Last 25`
 - Purpose: revalidate the resumed worktree and current task authority before creating the approved visual-grouping follow-up.
+- Status: COMPLETED
+- Result: exit code 0; only generated Godot import byproducts are untracked; T024a/T024b/T024d are BLOCKED and T024c is READY.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the approved T024e task split and updated plan/task count.
 - Status: NOT RUN
 
 ### Pending
