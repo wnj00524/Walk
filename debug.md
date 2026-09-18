@@ -97,6 +97,13 @@
 
 - Command: `rg --files "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\tools" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests" | rg "inspect_asset|tscn$"`
 - Purpose: locate the asset-inspection scene before running geometry/material diagnostics.
+- Status: COMPLETED
+- Result: exit code 0; inspection scene is `game/tests/tools/asset_review.tscn`.
+
+### Pending
+
+- Command: `$godot = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; foreach ($asset in @("tree_textured_01.glb", "rock_textured_01.glb", "groundcover_textured_01.glb")) { & $godot --path "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game" --scene res://tests/tools/asset_review.tscn -- res://assets/initial/$asset }`
+- Purpose: inspect all approved GLB meshes through Godot's real importer and capture their reported geometry/material readiness.
 - Status: NOT RUN
 
 ### Pending
