@@ -244,6 +244,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the T024c task split, dependencies, and updated plan structure.
+- Status: FAILED
+- Result: exit code 1; `T024c: missing section Non-goals.`
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: rerun validation after adding the required T024c Non-goals section.
 - Status: NOT RUN
 
 ### Pending
