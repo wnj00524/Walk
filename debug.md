@@ -34,4 +34,11 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
 - Purpose: run the focused visual-preset regression check with the known Godot executable path.
+- Status: FAILED
+- Result: exit code 1; Godot version probe exited 127, expected `4.6.2.stable.official.71f334935`; log: `artifacts/check_game_20260918-095804_version.log`.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\check_game_20260918-095804_version.log"`
+- Purpose: inspect the exact Godot version-probe failure before selecting a safe invocation.
 - Status: NOT RUN
