@@ -60,6 +60,7 @@ Task cards contain full dependencies and scope. Later WAITING cards must be refi
 | T023 | Set consistent terrain materials and daylight | DONE |
 | T024 | Accept the first procedural visual-quality slice | BLOCKED |
 | T024a | Improve vegetation grouping for the visual gate | BLOCKED |
+| T024b | Place vegetation batches in their owning world cells | READY |
 | T025 | Implement a guarded ElevenLabs sound client | WAITING |
 | T026 | Produce and approve a small ambience library | WAITING |
 | T027 | Add layered local environmental sound | WAITING |

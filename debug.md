@@ -188,6 +188,13 @@
 
 - Command: `rg -n "38|T024a|EXPECTED|task records" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\test_project.py" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py"`
 - Purpose: locate task-count and status expectations that must be updated for the new T024b split.
+- Status: COMPLETED
+- Result: exit code 0; helper expected 38 tasks and only T024a READY, so it was updated to expect 39 tasks and only T024b READY.
+
+### Pending
+
+- Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
+- Purpose: validate the new T024b task record, dependency state, and updated plan structure.
 - Status: NOT RUN
 
 ### Pending
