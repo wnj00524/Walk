@@ -76,6 +76,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff -- game/src/presentation/vegetation_batches.gd game/data/asset_catalogue.json game/data/habitats.json game/tests/visual_capture.gd`
 - Purpose: inspect the current T024a diff and the asset-instantiation/capture configuration before editing.
+- Status: COMPLETED
+- Result: exit code 0; only habitat density/grouping and placement test changes are pending. Asset-instantiation source is unchanged; generated Godot import byproducts remain untracked.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src\\presentation\\vegetation_batches.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\asset_catalogue.json"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\visual_capture.gd"`
+- Purpose: read the complete asset load, catalogue, and capture implementation to identify the material presentation defect.
 - Status: NOT RUN
 
 ### Pending
