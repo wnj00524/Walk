@@ -8,3 +8,9 @@
 - Purpose: inspect changes and generated import byproducts left by the interrupted regression batch.
 - Status: FAILED
 - Result: `fatal: not a git repository (or any of the parent directories): .git`
+
+### Pending
+
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all`
+- Purpose: inspect the repository and identify changes left by the interrupted regression batch.
+- Status: NOT RUN
