@@ -111,7 +111,8 @@
 
 - Command: `rg -n "StandardMaterial|albedo_texture|texture|material" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\.godot\\imported\\tree_textured_01.glb-0c64f05a22b6b612b1b792214a182147.scn" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\.godot\\imported\\rock_textured_01.glb-df50e526d6c6dd363f7d5904952c0ec3.scn" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\.godot\\imported\\groundcover_textured_01.glb-27f530dce05a0c793b58ec563809baf3.scn"`
 - Purpose: verify whether imported GLB scenes contain material texture bindings or only untextured geometry.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 1; no text material bindings were found in the imported `.scn` resources. This is inconclusive because Godot stores the imported scene resources in a non-text-readable form here.
 
 ### Pending
 
