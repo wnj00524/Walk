@@ -123,6 +123,12 @@
 
 ### Pending
 
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024a_visual_capture" --timeout 180`
+- Purpose: regenerate fixed-seed PNG evidence after placing vegetation batches at their correct world-cell origins.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
 - Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
 - Status: NOT RUN
