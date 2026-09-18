@@ -130,6 +130,12 @@
 
 ### Pending
 
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src\\world\\placement_rules.gd"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\visual_route.json"`
+- Purpose: verify how density/cluster settings become world positions and whether the fixed capture route actually crosses populated cells.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
 - Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
 - Status: NOT RUN
