@@ -340,6 +340,12 @@
 
 ### Pending
 
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite placement`
+- Purpose: verify compact cluster counts with the approved dense budgets before the final visual capture attempt.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
 - Purpose: capture the revised near-ground fixed-seed route for T024d visual inspection.
 - Status: COMPLETED
