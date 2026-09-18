@@ -434,7 +434,8 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the final DONE status records for T024a/T024e after the independent review promotion.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; 42 task records and plan structure checked. Game/runtime not tested by this command.
 
 ### Pending
 
