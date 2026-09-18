@@ -312,6 +312,12 @@
 
 ### Pending
 
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite placement`
+- Purpose: verify the final bounded T024a habitat budgets before recapturing visual evidence.
+- Status: NOT RUN
+
+### Pending
+
 - Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
 - Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
 - Status: NOT RUN
