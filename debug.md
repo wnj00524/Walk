@@ -420,6 +420,13 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" show --stat --oneline 5b7516a; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" show --format= 5b7516a -- game/data/habitats.json docs/evidence/T024e.md PLAN.md DLOG.md`
 - Purpose: inspect the actual T024e implementation/evidence/status commit during independent review.
+- Status: COMPLETED
+- Result: exit code 0; evidence/status commit is documentation-only and matches the recorded later habitat tuning commits; no unexpected tracked source is dirty.
+
+### Pending
+
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" diff --check`
+- Purpose: run the final whitespace check during independent review before promoting T024e/T024a.
 - Status: NOT RUN
 
 ### Pending
