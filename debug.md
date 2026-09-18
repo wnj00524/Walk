@@ -352,6 +352,16 @@
 - Status: COMPLETED
 - Result: exit code 0; validated four captures and report under `artifacts/T024e_visual_capture`.
 
+### Review
+
+- Result: ground-level and overview PNGs now show visibly denser tree/groundcover groups; the close pose remains mostly empty terrain. Fixed-seed grouping is improved but supplementary seed evidence is still unverified.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite vegetation`
+- Purpose: run the affected vegetation lifecycle and approved-asset regression after the final habitat tuning.
+- Status: NOT RUN
+
 ### Pending
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
