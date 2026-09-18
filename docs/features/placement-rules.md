@@ -26,6 +26,12 @@ Run the focused proof with:
 python tools/check_game.py --suite placement
 ```
 
+T024a uses bounded grouping budgets: forest is 24 objects across 5 clusters
+per cell, meadow is 16 across 4 clusters, and rocky is 10 across 3 clusters.
+These values preserve deterministic ownership, terrain gating, approved-asset
+checks, and the nine-batch renderer bound while making habitat groups more
+readable in fixed-seed captures.
+
 This verifies valid habitat data, stable sorted records, reversed cell load
 order, missing-asset rejection, and deferred terrain readiness. It uses a
 labelled in-memory approved catalogue in tests; the checked-in runtime

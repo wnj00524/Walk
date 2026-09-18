@@ -81,7 +81,8 @@ func _run() -> void:
 				Callable(PlacementRulesChecks, "reversed_cell_load_order_is_stable"),
 				Callable(PlacementRulesChecks, "neighboring_cells_have_disjoint_owners"),
 				Callable(PlacementRulesChecks, "rejects_missing_assets"),
-				Callable(PlacementRulesChecks, "defers_unready_terrain")
+				Callable(PlacementRulesChecks, "defers_unready_terrain"),
+				Callable(PlacementRulesChecks, "habitat_visual_budget_is_bounded")
 			],
 			"vegetation": [
 				Callable(VegetationBatchesChecks, "creates_and_reuses_batches"),

@@ -66,6 +66,17 @@ static func defers_unready_terrain() -> String:
 	var result := _generate_with_catalogue(42, 0, 0, habitats, _catalogue(), false)
 	return "expected DEFERRED terrain state, got %s" % result.status if result.status != "DEFERRED" else ""
 
+static func habitat_visual_budget_is_bounded() -> String:
+	var habitats: Array = PlacementRulesType.load_habitats().habitats
+	var total_density := 0
+	for habitat: Dictionary in habitats:
+		var density := int(habitat.density_per_cell)
+		var clusters := int(habitat.cluster_count)
+		if density < 1 or density > 32 or clusters < 1 or clusters > 8:
+			return "habitat %s exceeds the visual grouping budget" % habitat.habitat_id
+		total_density += density
+	return "total candidate density exceeds 64 per cell" if total_density > 64 else ""
+
 static func _generate(seed_value: int, cell_x: int, cell_z: int, habitats: Array) -> Dictionary:
 	return _generate_with_catalogue(seed_value, cell_x, cell_z, habitats, _catalogue())
 

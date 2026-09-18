@@ -4,8 +4,8 @@
     {
       "habitat_id": "forest",
       "channel": "placement_forest",
-      "density_per_cell": 8,
-      "cluster_count": 3,
+      "density_per_cell": 24,
+      "cluster_count": 5,
       "min_slope": 0.0,
       "max_slope": 0.55,
       "scale_min": 0.8,
@@ -15,8 +15,8 @@
     {
       "habitat_id": "meadow",
       "channel": "placement_meadow",
-      "density_per_cell": 6,
-      "cluster_count": 2,
+      "density_per_cell": 16,
+      "cluster_count": 4,
       "min_slope": 0.0,
       "max_slope": 0.3,
       "scale_min": 0.7,
@@ -26,8 +26,8 @@
     {
       "habitat_id": "rocky",
       "channel": "placement_rocky",
-      "density_per_cell": 4,
-      "cluster_count": 2,
+      "density_per_cell": 10,
+      "cluster_count": 3,
       "min_slope": 0.12,
       "max_slope": 1.2,
       "scale_min": 0.65,

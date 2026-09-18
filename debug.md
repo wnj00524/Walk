@@ -174,7 +174,8 @@
 
 - Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short --untracked-files=all`
 - Purpose: identify the exact tracked T024a files and generated import byproducts before the implementation commit.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; tracked T024a edits are habitat/test/docs/status changes, plus one new evidence report. Godot-generated import/JPG/UID byproducts are untracked and excluded from the commit.
 
 ### Pending
 
