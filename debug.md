@@ -307,6 +307,13 @@
 
 - Command: `python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\project.py" validate`
 - Purpose: validate the approved T024e task split and updated plan/task count.
+- Status: COMPLETED
+- Result: exit code 0; 42 task records and plan structure checked. Game/runtime not tested by this command.
+
+### Pending
+
+- Command: `Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data\\habitats.json"; Get-Content "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\tests\\test_placement_rules.gd"`
+- Purpose: inspect the current habitat limits and focused assertions before tuning T024e suitability and scale.
 - Status: NOT RUN
 
 ### Pending
