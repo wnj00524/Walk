@@ -328,6 +328,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024e_visual_capture" --timeout 180`
 - Purpose: capture fixed-seed PNG evidence after T024e suitability and scale tuning.
+- Status: COMPLETED
+- Result: exit code 0; validated four captures and report under `artifacts/T024e_visual_capture`.
+
+### Pending
+
+- Command: `git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" status --short; git -C "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk" log -1 --oneline`
+- Purpose: determine whether the T024e capture-result ledger commit/push completed after the approval-review timeout.
 - Status: NOT RUN
 
 ### Pending
