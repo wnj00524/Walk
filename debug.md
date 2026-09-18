@@ -314,6 +314,13 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite placement`
 - Purpose: verify the final bounded T024a habitat budgets before recapturing visual evidence.
+- Status: COMPLETED
+- Result: exit code 0; placement suite executed 7, passed 7, failed 0. Logs: `artifacts/check_game_20260918-110311_import.log`, `artifacts/check_game_20260918-110311_suite_placement.log`.
+
+### Pending
+
+- Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\run_visual.py" --output-dir "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\artifacts\\T024d_visual_capture" --timeout 180`
+- Purpose: recapture the near-ground fixed-seed route after the final bounded grouping adjustment.
 - Status: NOT RUN
 
 ### Pending
