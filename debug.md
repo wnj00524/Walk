@@ -48,4 +48,5 @@
 
 - Command: `$env:GODOT_BIN = "C:\\Users\\jdwil\\scoop\\shims\\godot.EXE"; python "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\tools\\check_game.py" --suite visual_preset`
 - Purpose: rerun the focused visual-preset regression check with filesystem/process access elevated for Godot.
-- Status: NOT RUN
+- Status: COMPLETED
+- Result: exit code 0; suite executed 5, passed 5, failed 0. Logs: `artifacts/check_game_20260918-095921_import.log`, `artifacts/check_game_20260918-095921_suite_visual_preset.log`.
