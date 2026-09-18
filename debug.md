@@ -71,3 +71,9 @@
 - Purpose: inspect rendered-instance counts and Godot asset-loading diagnostics for the sparse PNG result.
 - Status: COMPLETED
 - Result: exit code 0; report shows world seed 42, 299 rendered instances, 9 resident batches, no vegetation error, RTX 2060/OpenGL compatibility. Log contains no asset-load errors.
+
+### Pending
+
+- Command: `rg -n "groundcover|rock_textured|tree_textured|habitats|asset|material|texture" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\data" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\src" "C:\\Users\\jdwil\\source\\repos\\Codex\\Walk\\game\\assets\\initial"`
+- Purpose: trace the asset catalogue, habitat selection, and material/texture references behind the PNG instances.
+- Status: NOT RUN
